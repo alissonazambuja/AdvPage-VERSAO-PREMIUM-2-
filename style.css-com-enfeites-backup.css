@@ -1,0 +1,1103 @@
+
+/* ==========================================
+   ADVPAGE — ACABAMENTO VISUAL PREMIUM
+   Efeitos suaves para logo, botões e cartões
+   ========================================== */
+
+:root {
+    --adv-gold: #b8945b;
+    --adv-navy: #142b3b;
+}
+
+/* Logo: aumento suave e brilho elegante */
+header .logo,
+header .brand,
+header .brand img,
+header .logo img,
+.site-logo,
+.site-logo img,
+.logo img {
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease,
+        opacity 0.3s ease;
+}
+
+header .logo:hover,
+header .brand:hover,
+.site-logo:hover,
+.logo:hover {
+    transform: scale(1.045);
+    filter: drop-shadow(0 3px 8px rgba(184, 148, 91, 0.28));
+}
+
+header .brand img:hover,
+header .logo img:hover,
+.site-logo img:hover,
+.logo img:hover {
+    transform: scale(1.045);
+    filter: drop-shadow(0 3px 8px rgba(184, 148, 91, 0.35));
+}
+
+/* Links do menu: linha dourada discreta */
+header nav a {
+    position: relative;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+header nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background: var(--adv-gold);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
+}
+
+header nav a:hover {
+    color: var(--adv-gold);
+}
+
+header nav a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Botões: movimento leve e sombra */
+button,
+.button,
+.btn,
+a.button,
+a.btn {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+button:hover,
+.button:hover,
+.btn:hover,
+a.button:hover,
+a.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(20, 43, 59, 0.16);
+}
+
+/* Cartões dos modelos: elevação suave */
+.card,
+.model-card,
+.template-card,
+.modelo-card,
+.portfolio-card,
+.service-card {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.card:hover,
+.model-card:hover,
+.template-card:hover,
+.modelo-card:hover,
+.portfolio-card:hover,
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 32px rgba(20, 43, 59, 0.11);
+    border-color: rgba(184, 148, 91, 0.55);
+}
+
+/* Imagens dos cartões: leve zoom */
+.card img,
+.model-card img,
+.template-card img,
+.modelo-card img,
+.portfolio-card img {
+    transition: transform 0.4s ease;
+}
+
+.card:hover img,
+.model-card:hover img,
+.template-card:hover img,
+.modelo-card:hover img,
+.portfolio-card:hover img {
+    transform: scale(1.025);
+}
+
+/* Títulos: cor refinada ao passar o mouse */
+h1,
+h2,
+h3 {
+    transition: color 0.25s ease;
+}
+
+/* Foco visível para navegação por teclado */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--adv-gold);
+    outline-offset: 4px;
+}
+
+/* Evita animações para quem prefere movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+/* Em celulares, não aplica efeitos que dependem do mouse */
+@media (hover: none) {
+    .card:hover,
+    .model-card:hover,
+    .template-card:hover,
+    .modelo-card:hover,
+    .portfolio-card:hover,
+    .service-card:hover,
+    button:hover,
+    .button:hover,
+    .btn:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+
+/* ==========================================
+   ADVPAGE — MELHORIAS VISUAIS PREMIUM
+   Página principal
+   ========================================== */
+
+/* Logo com aumento suave e sombra dourada */
+.logo {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.04);
+    filter: drop-shadow(0 3px 7px rgba(177, 138, 72, 0.28));
+}
+
+.site-logo {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo:hover .site-logo {
+    transform: scale(1.06);
+    filter: drop-shadow(0 2px 5px rgba(177, 138, 72, 0.4));
+}
+
+/* Identificação da marca */
+.logo-text small {
+    letter-spacing: 1.5px;
+    transition: color 0.25s ease;
+}
+
+.logo:hover .logo-text small {
+    color: #b18a48;
+}
+
+/* Menu elegante */
+.nav-links a {
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.nav-links a:hover {
+    color: #b18a48;
+}
+
+.nav-links .nav-button:hover {
+    transform: translateY(-2px);
+}
+
+/* Aumentar os textos de apresentação */
+.hero-copy > p,
+.hero-copy .hero-description {
+    font-size: 19px;
+    line-height: 1.8;
+}
+
+.hero-copy .eyebrow,
+.hero-copy .hero-label {
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+/* Título principal maior */
+.hero-copy h1 {
+    font-size: clamp(40px, 4.5vw, 60px);
+    line-height: 1.15;
+}
+
+/* Título e descrição da seção de modelos */
+.models h2 {
+    font-size: clamp(32px, 3.5vw, 44px);
+    line-height: 1.2;
+}
+
+.models .section-description,
+.models .section-heading p,
+.models .container > p {
+    font-size: 18px;
+    line-height: 1.75;
+}
+
+/* Cartões com elevação e sombra */
+.model-card {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.model-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(30, 53, 69, 0.13);
+    border-color: rgba(177, 138, 72, 0.5);
+}
+
+/* Botões com movimento discreto */
+button,
+.nav-button,
+.button,
+.hero a,
+.model-card a {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        color 0.25s ease;
+}
+
+button:hover,
+.nav-button:hover,
+.button:hover,
+.hero a:hover,
+.model-card a:hover {
+    box-shadow: 0 7px 18px rgba(30, 53, 69, 0.12);
+}
+
+/* Ajustes para telas pequenas */
+@media (max-width: 600px) {
+    .hero-copy h1 {
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    .hero-copy > p,
+    .hero-copy .hero-description {
+        font-size: 17px;
+        line-height: 1.75;
+    }
+
+    .models h2 {
+        font-size: 30px;
+    }
+
+    .models .section-description,
+    .models .section-heading p,
+    .models .container > p {
+        font-size: 17px;
+    }
+}
+
+/* Respeita usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    .logo,
+    .site-logo,
+    .nav-links a,
+    .model-card,
+    button {
+        transition: none;
+    }
+}
+
+
+/* ============================================
+   ADVPAGE — DETALHES DECORATIVOS PREMIUM
+   Cole no final do style.css principal
+   ============================================ */
+
+:root {
+    --adv-gold: #b18a48;
+    --adv-gold-light: #d8bd88;
+    --adv-navy: #1e3545;
+}
+
+/* Cabeçalho com acabamento refinado */
+.header {
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.header:hover {
+    box-shadow: 0 5px 24px rgba(30, 53, 69, 0.07);
+}
+
+/* Linha dourada decorativa abaixo do cabeçalho */
+.header::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(177, 138, 72, 0.55),
+        transparent
+    );
+}
+
+/* Logo com brilho discreto */
+.logo:hover .site-logo {
+    filter: drop-shadow(0 0 8px rgba(177, 138, 72, 0.42));
+}
+
+/* Hero: pequenos detalhes de luz no fundo */
+.hero {
+    position: relative;
+    isolation: isolate;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 45px;
+    right: 4%;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(177, 138, 72, 0.12),
+        rgba(177, 138, 72, 0)
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 25px;
+    left: 2%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(71, 107, 128, 0.09),
+        transparent 70%
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Pequeno detalhe dourado nos títulos das seções */
+.models h2,
+.intro h2,
+.price-card h2 {
+    text-decoration-color: var(--adv-gold);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+}
+
+/* Cartões dos modelos com borda elegante */
+.model-card {
+    position: relative;
+    overflow: hidden;
+    border-color: rgba(30, 53, 69, 0.09);
+}
+
+.model-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        var(--adv-gold),
+        var(--adv-gold-light),
+        transparent
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: 2;
+}
+
+.model-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Imagens dos modelos com zoom muito leve */
+.model-art {
+    overflow: hidden;
+}
+
+.model-art img {
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.model-card:hover .model-art img {
+    transform: scale(1.035);
+    filter: saturate(1.06);
+}
+
+/* Botões principais com gradiente sutil */
+.hero .button,
+.hero .btn,
+.nav-button {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.hero .button:hover,
+.hero .btn:hover,
+.nav-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 22px rgba(30, 53, 69, 0.16);
+}
+
+/* Preços e cartões com profundidade */
+.price-card {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.price-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(30, 53, 69, 0.1);
+    border-color: rgba(177, 138, 72, 0.4);
+}
+
+/* Perguntas frequentes: realce ao interagir */
+.faq details,
+.faq-item {
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.faq details:hover,
+.faq-item:hover {
+    border-color: rgba(177, 138, 72, 0.5);
+}
+
+/* Links com transição suave */
+a {
+    transition: color 0.25s ease;
+}
+
+/* Rodapé com uma linha superior delicada */
+footer {
+    position: relative;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--adv-gold),
+        transparent
+    );
+}
+
+/* Animação discreta de entrada */
+@keyframes advFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .hero-copy {
+        animation: advFadeUp 0.65s ease both;
+    }
+
+    .hero-card {
+        animation: advFadeUp 0.8s ease both;
+    }
+}
+
+/* Respeita preferência por menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}
+
+/* Mantém a página confortável em dispositivos móveis */
+@media (max-width: 600px) {
+    .hero::before {
+        width: 110px;
+        height: 110px;
+        right: 0;
+    }
+
+    .hero::after {
+        width: 75px;
+        height: 75px;
+        left: 0;
+    }
+
+    .model-card:hover,
+    .price-card:hover {
+        transform: none;
+    }
+}
+
+
+
+/* =================================================
+   ADVPAGE — VISUAL PREMIUM COLORIDO
+   Luzes, gradientes, botões e cartões interativos
+   Cole no FINAL do style.css principal
+   ================================================= */
+
+:root {
+    --adv-navy: #142b45;
+    --adv-blue: #2878ff;
+    --adv-cyan: #49d7e8;
+    --adv-purple: #8265f5;
+    --adv-gold: #d7a84b;
+    --adv-pink: #f078b5;
+}
+
+/* Fundo geral com um toque de cor */
+body {
+    background-image:
+        radial-gradient(
+            ellipse at 5% 5%,
+            rgba(73, 215, 232, 0.09),
+            transparent 32%
+        ),
+        radial-gradient(
+            ellipse at 95% 25%,
+            rgba(130, 101, 245, 0.07),
+            transparent 30%
+        );
+}
+
+/* Cabeçalho com transparência elegante */
+.header {
+    position: relative;
+    z-index: 20;
+    border-bottom: 1px solid rgba(40, 120, 255, 0.13);
+    box-shadow: 0 6px 24px rgba(20, 43, 69, 0.05);
+}
+
+/* Logo com brilho azul e dourado */
+.logo {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo:hover {
+    transform: translateY(-2px) scale(1.045);
+    filter: drop-shadow(0 4px 12px rgba(40, 120, 255, 0.25));
+}
+
+.logo:hover .site-logo {
+    filter: drop-shadow(0 0 9px rgba(215, 168, 75, 0.6));
+}
+
+/* Menu com efeito colorido */
+.nav-links a {
+    position: relative;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.nav-links a:not(.nav-button)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        var(--adv-blue),
+        var(--adv-cyan),
+        var(--adv-purple)
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:not(.nav-button):hover {
+    color: var(--adv-blue);
+}
+
+.nav-links a:not(.nav-button):hover::after {
+    transform: scaleX(1);
+}
+
+/* Hero com manchas de luz decorativas */
+.hero {
+    position: relative;
+    isolation: isolate;
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+.hero::before {
+    width: 260px;
+    height: 260px;
+    top: 20px;
+    right: 3%;
+    background: radial-gradient(
+        circle,
+        rgba(73, 215, 232, 0.18),
+        rgba(40, 120, 255, 0.06) 45%,
+        transparent 72%
+    );
+    animation: advFloat 8s ease-in-out infinite;
+}
+
+.hero::after {
+    width: 210px;
+    height: 210px;
+    left: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle,
+        rgba(130, 101, 245, 0.13),
+        transparent 70%
+    );
+    animation: advFloat 10s ease-in-out infinite reverse;
+}
+
+/* Título com acabamento de cor */
+.hero-copy h1 {
+    text-wrap: balance;
+}
+
+.hero-copy h1 strong,
+.hero-copy h1 span {
+    background: linear-gradient(
+        110deg,
+        var(--adv-blue),
+        var(--adv-purple),
+        var(--adv-gold)
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: advGradient 6s ease-in-out infinite alternate;
+}
+
+/* Botões principais com gradiente azul-violeta */
+.hero .button,
+.hero .btn,
+.nav-links .nav-button,
+button,
+a.button,
+a.btn {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 12px;
+    transition:
+        transform 0.28s ease,
+        box-shadow 0.28s ease,
+        filter 0.28s ease;
+}
+
+.hero .button-primary,
+.hero .btn-primary,
+.nav-links .nav-button {
+    background-image: linear-gradient(
+        115deg,
+        #246bdb,
+        #5367ee 55%,
+        #8265f5
+    );
+    color: #fff;
+    box-shadow:
+        0 6px 18px rgba(40, 120, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+/* Reflexo que percorre os botões */
+.hero .button::before,
+.hero .btn::before,
+.nav-links .nav-button::before,
+button::before,
+a.button::before,
+a.btn::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -50%;
+    left: -80%;
+    width: 45%;
+    height: 200%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transform: rotate(22deg);
+    transition: left 0.55s ease;
+}
+
+.hero .button:hover::before,
+.hero .btn:hover::before,
+.nav-links .nav-button:hover::before,
+button:hover::before,
+a.button:hover::before,
+a.btn:hover::before {
+    left: 140%;
+}
+
+.hero .button:hover,
+.hero .btn:hover,
+.nav-links .nav-button:hover,
+button:hover,
+a.button:hover,
+a.btn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 12px 28px rgba(40, 120, 255, 0.25),
+        0 0 0 3px rgba(73, 215, 232, 0.1);
+    filter: saturate(1.15);
+}
+
+/* Botões de contorno com borda viva */
+.button-outline,
+.btn-outline {
+    border: 1px solid transparent;
+    background:
+        linear-gradient(#fff, #fff) padding-box,
+        linear-gradient(
+            110deg,
+            var(--adv-blue),
+            var(--adv-cyan),
+            var(--adv-purple)
+        ) border-box;
+}
+
+/* Cartões dos modelos com bordas gradientes */
+.model-card {
+    position: relative;
+    isolation: isolate;
+    border: 1px solid rgba(40, 120, 255, 0.14);
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(20, 43, 69, 0.05);
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.model-card::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+        135deg,
+        var(--adv-blue),
+        var(--adv-cyan),
+        var(--adv-purple),
+        var(--adv-gold)
+    );
+    background-size: 250% 250%;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.model-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 18px 42px rgba(20, 43, 69, 0.12),
+        0 0 22px rgba(40, 120, 255, 0.07);
+    border-color: rgba(40, 120, 255, 0.3);
+}
+
+.model-card:hover::before {
+    opacity: 1;
+    animation: advGradient 5s linear infinite;
+}
+
+/* Imagens dos modelos com zoom suave */
+.model-art {
+    overflow: hidden;
+}
+
+.model-art img {
+    transition: transform 0.55s ease, filter 0.55s ease;
+}
+
+.model-card:hover .model-art img {
+    transform: scale(1.055);
+    filter: saturate(1.12);
+}
+
+/* Cartões de preço com destaque dourado */
+.price-card {
+    position: relative;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.price-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 36px rgba(20, 43, 69, 0.1);
+}
+
+.price-card.featured {
+    border-top: 3px solid var(--adv-gold);
+    box-shadow: 0 10px 30px rgba(215, 168, 75, 0.11);
+}
+
+/* Ícones e pequenos destaques */
+.model-card h3,
+.price-card h3 {
+    transition: color 0.25s ease;
+}
+
+.model-card:hover h3 {
+    color: var(--adv-blue);
+}
+
+/* Rodapé com faixa multicolorida */
+footer {
+    position: relative;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        var(--adv-blue),
+        var(--adv-cyan),
+        var(--adv-purple),
+        var(--adv-pink),
+        var(--adv-gold)
+    );
+    background-size: 200% 100%;
+    animation: advGradient 8s linear infinite;
+}
+
+/* Animações */
+@keyframes advFloat {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        transform: translate3d(0, -14px, 0);
+    }
+}
+
+@keyframes advGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Celulares: visual leve e sem animações de hover */
+@media (max-width: 600px) {
+    .hero::before {
+        width: 150px;
+        height: 150px;
+        right: -35px;
+    }
+
+    .hero::after {
+        width: 120px;
+        height: 120px;
+    }
+
+    .model-card:hover,
+    .price-card:hover {
+        transform: none;
+    }
+}
+
+/* Acessibilidade: respeita a preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+
+/* ==========================================
+   ADVPage - NOVAS CORES DA SEÇÃO PRINCIPAL
+   ========================================== */
+
+/* Fundo principal do banner */
+.hero {
+    background: linear-gradient(
+        135deg,
+        #F8FAFC 0%,
+        #EAF2F7 100%
+    ) !important;
+}
+
+/* Texto pequeno: LANDING PAGES PARA ADVOGADOS */
+.hero-copy .eyebrow {
+    color: #17324D !important;
+}
+
+/* Título principal */
+.hero-copy h1 {
+    color: #172D46 !important;
+}
+
+/* Texto descritivo */
+.hero-copy > p {
+    color: #536477 !important;
+}
+
+/* Destaque em itálico no título */
+.hero-copy h1 em {
+    color: #38A6B8 !important;
+}
+
+/* Botão principal */
+.hero-copy .btn-primary {
+    background: #17324D;
+    color: #FFFFFF;
+}
+
+
+
+/* ================================================
+   ADVPAGE — CORREÇÃO DEFINITIVA DO HERO
+   Remove marrom e amarelo da primeira seção
+   ================================================ */
+
+/* Fundo azul muito claro */
+.hero {
+    background: linear-gradient(
+        135deg,
+        #F8FAFC 0%,
+        #EAF2F8 55%,
+        #F1F7FA 100%
+    ) !important;
+}
+
+/* Pequeno texto acima do título */
+.hero-copy .eyebrow {
+    color: #17324D !important;
+}
+
+/* Título principal */
+.hero-copy h1 {
+    color: #172D46 !important;
+}
+
+/* Destaques do título: somente azul e ciano */
+.hero-copy h1 strong,
+.hero-copy h1 span {
+    background: linear-gradient(
+        110deg,
+        #2878FF,
+        #38A6B8,
+        #17324D
+    ) !important;
+
+    background-size: 100% auto !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #2878FF !important;
+    animation: none !important;
+}
+
+/* Texto descritivo */
+.hero-copy > p {
+    color: #536477 !important;
+}
+
+/* Manchas decorativas mais suaves */
+.hero::before {
+    background: radial-gradient(
+        circle,
+        rgba(56, 166, 184, 0.13),
+        rgba(40, 120, 255, 0.04) 45%,
+        transparent 72%
+    ) !important;
+}
+
+.hero::after {
+    background: radial-gradient(
+        circle,
+        rgba(40, 120, 255, 0.07),
+        transparent 70%
+    ) !important;
+}
+
+/* Forma decorativa lateral */
+.hero-shape {
+    background: radial-gradient(
+        circle,
+        rgba(56, 166, 184, 0.12) 0%,
+        rgba(234, 242, 248, 0.45) 45%,
+        transparent 70%
+    ) !important;
+}
+
+
