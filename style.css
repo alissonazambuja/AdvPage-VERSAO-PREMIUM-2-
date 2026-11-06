@@ -547,7 +547,7 @@ align-items:end
 .heading-row>p{
 max-width:370px;
 color:var(--muted);
-font-size:13px
+font-size:16px
 }
 
 .heading-row h2{
@@ -3133,7 +3133,7 @@ html {
 }
 
 .faq details p {
-    color: #536477;
+    color: #8d7421;
     line-height: 1.8;
 }
 
