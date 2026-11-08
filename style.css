@@ -3216,3 +3216,130 @@ html {
         transition: none !important;
     }
 }
+
+
+/* ==========================================
+   ADVPAGE — CORREÇÃO DO MENU RESPONSIVO
+   ========================================== */
+
+/* Evita que os elementos dos grids forcem
+   uma largura maior que a tela */
+.hero-grid,
+.intro-grid,
+.feature-grid,
+.model-grid,
+.price-grid,
+.steps,
+.faq-grid,
+.contact-inner {
+    min-width: 0;
+}
+
+.hero-grid > *,
+.intro-grid > *,
+.feature-grid > *,
+.model-grid > *,
+.price-grid > *,
+.steps > *,
+.faq-grid > *,
+.contact-inner > * {
+    min-width: 0;
+}
+
+/* Tablet e celular */
+@media (max-width: 900px) {
+
+    .header .nav {
+        justify-content: space-between;
+    }
+
+    /* Esconde o menu horizontal */
+    .header .nav-links {
+        display: none;
+    }
+
+    /* Mostra o menu quando o botão é acionado */
+    .header .nav-links.active {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 15px;
+        right: 15px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px;
+        background: #FFFFFF;
+        border: 1px solid #DCE4EB;
+        border-radius: 12px;
+        box-shadow: 0 12px 30px rgba(23, 50, 77, 0.14);
+        z-index: 200;
+    }
+
+    .header .nav-links.active a {
+        display: block;
+        width: 100%;
+        padding: 13px 15px;
+        white-space: normal;
+        font-size: 15px;
+    }
+
+    .header .nav-links.active .nav-button {
+        text-align: center;
+        margin-top: 6px;
+    }
+
+    .header .menu {
+        display: block;
+        flex-shrink: 0;
+        cursor: pointer;
+    }
+}
+
+/* Celulares */
+@media (max-width: 680px) {
+
+    .container {
+        width: calc(100% - 30px);
+        max-width: 600px;
+    }
+
+    .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 40px;
+    }
+
+    .hero-copy,
+    .hero-card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .actions {
+        flex-wrap: wrap;
+    }
+
+    .actions .button {
+        max-width: 100%;
+    }
+
+    .browser {
+        max-width: 100%;
+    }
+
+    .browser-body {
+        padding: 18px;
+    }
+
+    .mini-nav span {
+        font-size: 9px;
+    }
+
+    .mini-copy {
+        left: 25px;
+    }
+
+    .floating-price {
+        right: 5px;
+    }
+}
