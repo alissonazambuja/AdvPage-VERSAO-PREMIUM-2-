@@ -3343,3 +3343,19 @@ html {
         right: 5px;
     }
 }
+
+/* Correção definitiva de estouro horizontal no telemóvel e desktop */
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+@media (max-width: 680px) {
+    /* Impede que elementos flutuantes com right/left negativo empurrem a tela no celular */
+    [class*="hero"], 
+    [class*="browser"], 
+    .container, 
+    section {
+        overflow: hidden;
+    }
+}
