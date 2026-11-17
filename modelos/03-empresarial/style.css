@@ -206,7 +206,7 @@ summary:focus-visible {
 
 .main-nav > a {
   color: #52616b;
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 700;
   transition: color .2s ease;
 }
@@ -314,7 +314,7 @@ summary:focus-visible {
   align-items: center;
   gap: 11px;
   color: #8c6c3e;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: .17em;
   line-height: 1.6;
@@ -350,7 +350,7 @@ summary:focus-visible {
   max-width: 520px;
   margin-top: 24px;
   color: #64717a;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.95;
 }
 
@@ -424,7 +424,7 @@ summary:focus-visible {
 
 .hero-trust p {
   color: #75818a;
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.7;
 }
 
@@ -652,7 +652,7 @@ summary:focus-visible {
 .section-heading > p {
   max-width: 430px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.9;
 }
 
@@ -677,7 +677,9 @@ summary:focus-visible {
   background: #fff;
   border: 1px solid var(--line);
   transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  font-size: 13px;
 }
+
 
 .service-card:hover {
   transform: translateY(-5px);
@@ -1048,6 +1050,7 @@ summary:focus-visible {
 
 .section-kicker-light {
   color: #dfc99f;
+  font-size: 28px;
 }
 
 .contact-section h2 {

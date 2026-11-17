@@ -112,7 +112,7 @@ padding-bottom:80px
 }
 
 .eyebrow{
-font-size:11px;
+font-size:25px;
 letter-spacing:2.2px;
 font-weight:700;
 color:var(--gold);
@@ -436,7 +436,7 @@ font:600 34px 'Playfair Display',serif
 
 .facts span,
 .note{
-font-size:11px;
+font-size:15px;
 color:#706a60
 }
 
