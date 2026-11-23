@@ -1,539 +1,1526 @@
+/* =========================================================================
+   [ARQUIVO]: style.css (raiz do projeto)
+   [FINALIDADE]: Estilo global da AdvPage + identidades visuais distintas
+   e ricas para os Modelos 02, 03 e 04 (mantendo o Modelo 01 intacto).
+   [ATALHOS DE BUSCA - CTRL + F]:
+     - [COR]     -> paletas, gradientes, fundos e cores de texto
+     - [TAMANHO] -> alturas, espaçamentos, bordas e tamanhos de fonte
+     - [EFEITO]  -> animações, transições, sombras e hover
+     - [FOTO]    -> enquadramento e filtros de imagem dentro dos cards
+     - [FONTE]   -> famílias tipográficas
+   ========================================================================= */
+
+/* -----------------------------------------------------------------------
+   [COR] [FONTE] VARIÁVEIS GLOBAIS DO TEMA
+   ----------------------------------------------------------------------- */
 :root {
-    --bg-main: #F1F5F9;           /* Fundo Cinza-Claro Elegante */
-    --bg-card: #FFFFFF;           /* Cards em Branco */
-    --bg-section-alt: #E2E8F0;    /* Seção Alternada em Tom Neutro */
-    --primary-red: #8B0000;       /* Vermelho Vinho Nobre */
-    --btn-red: #9B111E;           /* Vermelho Botão */
-    --btn-red-hover: #7A0C16;
-    --text-dark: #0F172A;         /* Texto Escuro */
-    --text-muted: #475569;        /* Texto Secundário */
-    --border-color: #CBD5E1;      /* Borda Fina */
-    --font-heading: 'Cinzel', serif;
-    --font-body: 'Montserrat', sans-serif;
+  --bg: #F7F8FA;                               /* [COR] Fundo geral da página */
+  --paper: #ffffff;                              /* [COR] Fundo de superfícies claras */
+  --ink: #17222b;                                /* [COR] Cor principal de texto escuro */
+  --muted: #66717a;                              /* [COR] Cor secundária de texto */
+  --navy: #1e3545;                               /* [COR] Azul marinho institucional */
+  --blue: #476b80;                               /* [COR] Azul acinzentado de apoio */
+  --gold: #b18a48;                               /* [COR] Dourado clássico */
+  --line: #e4e0d8;                               /* [COR] Cor de divisórias/bordas neutras */
+  --sand: #F7F8FA;                               /* [COR] Fundo neutro claro */
+  --rose: #eee2df;                               /* [COR] Tom rosado suave */
+  --serif: 'Playfair Display', Georgia, serif;   /* [FONTE] Fonte serifada elegante */
+  --sans: 'DM Sans', Arial, sans-serif;           /* [FONTE] Fonte sans-serif de leitura */
+  --display: 'Manrope', Arial, sans-serif;       /* [FONTE] Fonte geométrica para títulos/badges */
 }
 
+/* -----------------------------------------------------------------------
+   [TAMANHO] [EFEITO] RESET E BASE GLOBAL
+   ----------------------------------------------------------------------- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;                     /* [EFEITO] Rolagem suave ao clicar em âncoras */
 }
 
 body {
-    background-color: var(--bg-main);
-    color: var(--text-dark);
-    font-family: var(--font-body);
-    line-height: 1.6;
+  background: var(--bg);                         /* [COR] Fundo da página */
+  color: var(--ink);                             /* [COR] Texto base */
+  font-family: var(--sans);                      /* [FONTE] Fonte padrão */
+  line-height: 1.6;                              /* [TAMANHO] Altura de linha padrão */
 }
 
-h1, h2, h3, .logo-title {
-    font-family: var(--font-heading);
-    letter-spacing: 0.5px;
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.25s ease;                  /* [EFEITO] Transição de cor nos links */
 }
 
 .container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+  width: min(1180px, calc(100% - 44px));          /* [TAMANHO] Largura máxima do container */
+  margin: auto;
 }
 
-.text-center { text-align: center; }
-.mt-4 { margin-top: 2.5rem; }
-
-/* Navbar */
-.navbar {
-    background: #FFFFFF;
-    border-bottom: 1px solid var(--border-color);
-    padding: 1.2rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+.skip-link {
+  position: fixed;
+  left: 12px;
+  top: -60px;
+  z-index: 999;
+  background: var(--ink);
+  color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 0 0 8px 8px;
 }
 
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.skip-link:focus {
+  top: 0;
 }
 
-.logo-title {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--primary-red);
-    display: block;
+/* -----------------------------------------------------------------------
+   [COR] [TAMANHO] [EFEITO] CABEÇALHO E NAVEGAÇÃO
+   ----------------------------------------------------------------------- */
+.header {
+  height: 82px;                                  /* [TAMANHO] Altura do header */
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(247, 248, 250, 0.94);         /* [COR] Fundo translúcido do header */
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(23, 34, 43, 0.08);
+  transition: height 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
 }
 
-.logo-sub {
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    color: var(--text-dark);
-    display: block;
-    font-family: var(--font-body);
-    font-weight: 600;
+.header.scrolled {
+  height: 70px;                                  /* [TAMANHO] Altura reduzida ao rolar */
+  background: rgba(255, 255, 255, 0.92);         /* [COR] Fundo ao rolar */
+  box-shadow: 0 10px 35px rgba(30, 53, 69, 0.08);
+}
+
+.nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo .site-logo {
+  width: 56px;                                   /* [TAMANHO] Largura da logo no topo */
+  height: 56px;                                  /* [TAMANHO] Altura da logo no topo */
+  object-fit: contain;
+  display: block;
+  flex: 0 0 auto;
+}
+
+.footer-logo .site-logo {
+  width: 48px;                                   /* [TAMANHO] Largura da logo no rodapé */
+  height: 48px;                                  /* [TAMANHO] Altura da logo no rodapé */
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  font: 800 14px var(--display);
+  letter-spacing: 0.12em;
+}
+
+.logo-text small {
+  display: block;
+  font: 600 7px var(--sans);
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-top: 3px;
 }
 
 .nav-links {
-    display: flex;
-    gap: 1.5rem;
+  display: flex;
+  gap: 27px;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: #55616a;                                /* [COR] Cor padrão dos links do menu */
 }
 
 .nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    transition: 0.3s;
+  position: relative;
+  transition: color 0.25s ease;
 }
 
 .nav-links a:hover {
-    color: var(--primary-red);
+  color: var(--navy);                            /* [COR] Cor no hover do menu */
 }
 
-/* Botões Vermelhos */
-.btn-red {
-    background: var(--btn-red);
-    color: #FFFFFF;
-    font-weight: 700;
-    font-size: 0.95rem;
-    padding: 1.1rem 2.2rem;
-    border-radius: 6px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    box-shadow: 0 4px 15px rgba(155, 17, 30, 0.25);
-    border: none;
+.nav-links a:not(.nav-button)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  height: 1px;
+  background: var(--gold);                       /* [COR] Linha decorativa sob links */
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
 }
 
-.btn-red i {
-    font-size: 1.3rem;
+.nav-links a:hover::after {
+  transform: scaleX(1);
 }
 
-.btn-red:hover {
-    background: var(--btn-red-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(122, 12, 22, 0.35);
+.nav-button {
+  padding: 12px 17px;
+  background: var(--navy);                       /* [COR] Fundo do botão de ação no menu */
+  color: #ffffff !important;                     /* [COR] Texto do botão de ação no menu */
+  border-radius: 5px;
+  box-shadow: 0 8px 20px rgba(30, 53, 69, 0.12);
 }
 
-.btn-small {
-    padding: 0.7rem 1.4rem;
-    font-size: 0.8rem;
+.menu {
+  display: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
 }
 
-/* Hero Section com Imagem e Camada de Suavização */
+.menu span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: var(--ink);                        /* [COR] Barras do menu mobile */
+  margin: 5px;
+}
+
+/* -----------------------------------------------------------------------
+   [COR] [TAMANHO] [EFEITO] HERO PRINCIPAL
+   ----------------------------------------------------------------------- */
 .hero {
-    padding: 6.5rem 0;
-    position: relative;
-    background-image:
-    linear-gradient(
-        180deg,
-        rgba(241, 245, 249, 0.45) 0%,
-        rgba(226, 232, 240, 0.55) 100%
-    ),
-    url('../img/themis-removebg-preview.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    border-bottom: 1px solid var(--border-color);
+  padding: 155px 0 100px;
+  min-height: 800px;
+  position: relative;
+  overflow: hidden;
+  background: #F7F8FA;                           /* [COR] Fundo da seção Hero */
 }
 
-.hero-content {
-    max-width: 880px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 2;
+.hero-shape {
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  right: -190px;
+  top: 80px;
+  background: radial-gradient(                   /* [COR] Mancha de luz decorativa no Hero */
+    circle,
+    rgba(56, 166, 184, 0.08) 0%,
+    transparent 70%
+  );
 }
 
-.hero-content h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    line-height: 1.3;
-    margin-bottom: 1.2rem;
-    color: var(--primary-red);
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.03fr 0.97fr;
+  gap: 65px;
+  align-items: center;
+  position: relative;
 }
 
-.hero-subtext {
-    color: var(--text-dark);
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 0.8rem;
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.19em;
+  font-weight: 800;
+  color: var(--navy);                            /* [COR] Subtítulo superior (eyebrow) */
 }
 
-.hero-highlight {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 2.5rem;
+.hero h1 {
+  font: 600 clamp(48px, 5.7vw, 76px) / 1.03 var(--serif); /* [FONTE] [TAMANHO] Título principal */
+  letter-spacing: -0.045em;
+  margin: 22px 0;
+  color: var(--ink);                             /* [COR] Cor do H1 */
 }
 
-/* Serviços */
-.problems-section {
-    padding: 5.5rem 0;
-    background: var(--bg-main);
+.hero h1 em,
+.intro h2 em,
+.models h2 em,
+.pricing h2 em,
+.process h2 em,
+.faq h2 em,
+.contact h2 em {
+  font-style: italic;
+  color: var(--blue);                            /* [COR] Palavras em itálico enfatizadas */
 }
 
-.problems-section h2 {
-    font-size: 2.3rem;
-    font-weight: 800;
-    color: var(--primary-red);
-    margin-bottom: 0.5rem;
+.hero-copy > p {
+  font-size: 16px;
+  color: var(--muted);                           /* [COR] Parágrafo introdutório do Hero */
+  max-width: 610px;
 }
 
-.section-subtitle {
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.85rem;
-    margin-bottom: 3.5rem;
-    font-weight: 600;
+.actions {
+  display: flex;
+  gap: 13px;
+  margin-top: 32px;
 }
 
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-    gap: 1.8rem;
-    text-align: left;
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  transition: 0.25s ease;
 }
 
-.card-box {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 2.2rem;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+.button:hover {
+  transform: translateY(-3px);                   /* [EFEITO] Elevação suave ao passar o mouse */
+  box-shadow: 0 12px 28px rgba(30, 53, 69, 0.14);
 }
 
-.card-box:hover {
-    border-color: var(--primary-red);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(139, 0, 0, 0.12);
+.primary {
+  background: var(--navy);                       /* [COR] Botão primário */
+  color: #ffffff;
 }
 
-.card-icon {
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
+.primary:hover {
+  background: #29495e;                           /* [COR] Botão primário no hover */
 }
 
-.card-box h3 {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 0.8rem;
-    color: var(--text-dark);
+.secondary {
+  border: 1px solid #cfd0cc;                     /* [COR] Borda do botão secundário */
+  background: #ffffff;                           /* [COR] Fundo do botão secundário */
 }
 
-.card-box p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
+.trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 27px;
+  font-size: 10px;
+  color: #6c767d;                                /* [COR] Itens de confiança */
 }
 
-.card-highlight-red {
-    background: #FFF5F5;
-    border: 1.5px solid var(--primary-red);
+/* -----------------------------------------------------------------------
+   [COR] [TAMANHO] [EFEITO] PRÉVIA EM JANELA (BROWSER MOCKUP NO HERO)
+   ----------------------------------------------------------------------- */
+.hero-card {
+  position: relative;
 }
 
-.card-highlight-red h3 {
-    color: var(--primary-red);
+.browser {
+  background: #c1bbbb;                           /* [COR] Moldura externa da janela simulada */
+  border: 1px solid #dfe0dc;
+  border-radius: 10px;
+  padding: 9px;
+  box-shadow: 0 30px 70px rgba(30, 53, 69, 0.13);
+  transform: rotate(1deg);
+  transition: 0.3s ease;
 }
 
-.card-full {
-    grid-column: 1 / -1;
-    text-align: center;
+.hero-card:hover .browser {
+  box-shadow: 0 35px 85px rgba(30, 53, 69, 0.17);
 }
 
-.cta-wrap {
-    margin-top: 3.5rem;
+.browser-top {
+  height: 28px;
+  border-bottom: 1px solid #eceae5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  color: #8b918f;
+  font-size: 8px;
 }
 
-/* Mid CTA */
-.mid-cta-section {
-    padding: 4.5rem 0;
-    background: var(--bg-section-alt);
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
+.browser-top i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7e9a87;                           /* [COR] Indicador da barra superior */
 }
 
-.mid-cta-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1.8rem;
-    color: var(--text-dark);
+.browser-body {
+  height: 500px;                                 /* [TAMANHO] Altura da prévia no Hero */
+  background: linear-gradient(145deg, #edf1ef, #dce5e5); /* [COR] Fundo da tela interna */
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Quem Sou & Área da Foto */
-.about-section {
-    padding: 5.5rem 0;
-    background: var(--bg-main);
+.browser-body:after {
+  content: "";
+  position: absolute;
+  width: 290px;
+  height: 290px;
+  border: 1px solid rgba(30, 53, 69, 0.12);
+  border-radius: 50%;
+  right: -100px;
+  bottom: -100px;
 }
 
-.about-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 3.5rem;
-    align-items: center;
+.mini-nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  letter-spacing: 0.13em;
+  color: #3e484e;
 }
 
-.about-text h2 {
-    font-size: 2.3rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary-red);
+.mini-nav span {
+  color: #666c71;
 }
 
-.about-text p {
-    color: var(--text-muted);
-    margin-bottom: 1.2rem;
-    font-size: 1.05rem;
+.mini-copy {
+  position: absolute;
+  left: 50px;
+  top: 150px;
 }
 
-.about-text p strong {
-    color: var(--text-dark);
+.mini-copy small {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--blue);
 }
 
-.about-photo-area {
-    display: flex;
-    justify-content: center;
+.mini-copy h2 {
+  font: 600 58px / 0.95 var(--serif);
+  margin: 15px 0;
 }
 
-.photo-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 0.8rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    width: 100%;
-    max-width: 380px;
+.mini-copy h2 em {
+  color: var(--gold);
+  font-style: italic;
 }
 
-.lawyer-photo {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+.mini-copy p {
+  font-size: 15px;
+  color: #66757b;
+  max-width: 220px;
+}
+
+.mini-copy > b {
+  display: inline-block;
+  margin-top: 22px;
+  background: var(--navy);
+  color: #ffffff;
+  padding: 11px 14px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.mini-number {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  font: italic 90px var(--serif);
+  color: rgba(30, 53, 69, 0.09);
+}
+
+.floating-price {
+  position: absolute;
+  right: -25px;
+  bottom: 18px;
+  background: var(--navy);                       /* [COR] Fundo do selo de preço flutuante */
+  color: #ffffff;                                /* [COR] Texto do selo de preço */
+  padding: 17px 20px;
+  border-radius: 7px;
+  box-shadow: 0 15px 30px rgba(30, 53, 69, 0.2);
+  animation: priceFloat 4s ease-in-out infinite; /* [EFEITO] Flutuação contínua */
+}
+
+.floating-price small {
+  display: block;
+  font-size: 7px;
+  letter-spacing: 0.15em;
+  color: #cdd9df;
+}
+
+.floating-price strong {
+  display: block;
+  font: 600 29px var(--serif);
+  color: #ffffff;
+}
+
+/* -----------------------------------------------------------------------
+   [COR] [TAMANHO] [EFEITO] SEÇÃO SOLUÇÃO E BENEFÍCIOS
+   ----------------------------------------------------------------------- */
+.intro {
+  padding: 125px 0;
+  background: #ffffff;                           /* [COR] Fundo da seção introdutória */
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 0.42fr 1.58fr;
+  gap: 70px;
+}
+
+.section-kicker {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #929b9d;                                /* [COR] Kicker lateral da seção */
+}
+
+.intro h2,
+.models h2,
+.pricing h2,
+.process h2,
+.faq h2 {
+  font: 600 clamp(40px, 5vw, 64px) / 1.06 var(--serif); /* [FONTE] [TAMANHO] Títulos de seção */
+  letter-spacing: -0.04em;
+}
+
+.intro p {
+  max-width: 690px;
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.features {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: #F7F8FA;                           /* [COR] Fundo da faixa de benefícios */
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.feature-grid article {
+  padding: 42px 27px 48px;
+  border-right: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.feature-grid article:first-child {
+  border-left: 1px solid var(--line);
+}
+
+.feature-grid article:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+.feature-grid span {
+  font: italic 18px var(--serif);
+  color: var(--gold);                            /* [COR] Numeração dos benefícios */
+}
+
+.feature-grid h3 {
+  font: 600 20px var(--display);
+  margin: 30px 0 10px;
+}
+
+.feature-grid p {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* -----------------------------------------------------------------------
+   [COR] [TAMANHO] [EFEITO] PORTFÓLIO / MODELOS (01 MANTIDO + 02, 03, 04 REFEITOS)
+   ----------------------------------------------------------------------- */
+.models {
+  padding: 125px 0;
+  background: #f2f4f7;                           /* [COR] Fundo geral da seção de modelos */
+}
+
+.heading-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  align-items: end;
+}
+
+.heading-row > p {
+  max-width: 370px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.heading-row h2 {
+  margin-top: 18px;
+}
+
+.model-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;                                     /* [TAMANHO] Espaço entre os cards de modelos */
+  margin-top: 58px;
+}
+
+.model-card {
+  background: #ffffff;                           /* [COR] Fundo base do card */
+  border: 1px solid #e3e0d8;
+  border-radius: 10px;                           /* [TAMANHO] Raio de borda base */
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  box-shadow: 0 8px 24px rgba(40, 45, 45, 0.04);
+}
+
+.model-card:hover {
+  transform: translateY(-6px);                   /* [EFEITO] Elevação no hover */
+  box-shadow: 0 20px 45px rgba(40, 45, 45, 0.1);
+}
+
+.model-art {
+  height: 365px;                                 /* [TAMANHO] Altura da área visual de cada card */
+  position: relative;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.model-art > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                             /* [FOTO] Enquadramento da imagem no card */
+  display: block;
+  filter: saturate(0.82);                        /* [FOTO] [EFEITO] Saturação inicial da foto */
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.model-card:hover .model-art > img {
+  transform: scale(1.04);                        /* [FOTO] [EFEITO] Zoom suave na foto no hover */
+}
+
+.model-art:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 30, 35, 0.05),
+    rgba(20, 30, 35, 0.62)
+  );
+  z-index: 1;
+}
+
+.badge {
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  font-weight: 800;
+  color: var(--navy);                            /* [COR] Texto do badge */
+  background: rgba(255, 255, 255, 0.86);         /* [COR] Fundo do badge */
+  padding: 8px 10px;
+  border-radius: 20px;
+  position: relative;
+  z-index: 3;
+}
+
+.mock {
+  position: absolute;
+  left: 14%;
+  top: 15%;
+  width: 72%;
+  height: 72%;
+  background: rgba(29, 43, 49, 0.88);
+  backdrop-filter: blur(2px);
+  color: #ffffff;
+  padding: 30px;
+  box-shadow: 0 20px 35px rgba(25, 40, 45, 0.2);
+  z-index: 2;
+  transition: transform 0.45s ease, box-shadow 0.45s ease, background 0.45s ease;
+}
+
+.model-card:hover .mock {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 28px 48px rgba(25, 40, 45, 0.24);
+}
+
+.mock.light {
+  background: rgba(255, 255, 255, 0.90);
+  color: var(--ink);
+}
+
+.mock b {
+  font: 600 22px var(--serif);
+  color: var(--gold);
+}
+
+.mock small {
+  display: block;
+  margin-top: 28px;
+  font-size: 7px;
+  letter-spacing: 0.16em;
+  color: #a8b4b8;
+}
+
+.mock.light small {
+  color: #71808a;
+}
+
+.mock strong {
+  display: block;
+  font: 500 30px / 1.05 var(--serif);
+  margin-top: 14px;
+}
+
+.mock em {
+  color: var(--blue);
+  font-style: italic;
+}
+
+.mock i {
+  display: block;
+  width: 42px;
+  height: 1px;
+  background: var(--gold);
+  margin-top: 25px;
+}
+
+/* [COR] Fundo base do Modelo 01 (mantido) */
+.art-real {
+  background: linear-gradient(135deg, #b8c7ca, #73878e);
+}
+
+/* =======================================================================
+   [COR] [EFEITO] [TAMANHO] IDENTIDADE EXCLUSIVA — MODELO 02 (PREVIDENCIÁRIO)
+   Paleta: Azul Safira Profundo (#0f2942) + Ciano Glacial (#2596be) + Gelo (#eaf4f8)
+   Layout: Painel lateral assimétrico à direita com faixa superior ciano e selo metálico
+   ======================================================================= */
+.model-card.model-02 {
+  background: linear-gradient(180deg, #ffffff 0%, #f1f8fb 100%); /* [COR] Fundo do card 02 */
+  border: 1px solid rgba(37, 150, 190, 0.28);    /* [COR] Borda azul ciano */
+  border-radius: 14px;                           /* [TAMANHO] Cantos mais arredondados */
+}
+
+.model-card.model-02:hover {
+  border-color: #2596be;                         /* [COR] Borda acesa no hover */
+  box-shadow: 0 22px 48px rgba(15, 41, 66, 0.16);
+}
+
+.model-02 .art-blue {
+  background: linear-gradient(135deg, #0f2942 0%, #1d4e73 55%, #2596be 100%); /* [COR] Gradiente azul safira/ciano */
+}
+
+.model-02 .model-art:after {
+  background: linear-gradient(                   /* [COR] Sobreposição escura azulada */
+    135deg,
+    rgba(15, 41, 66, 0.25),
+    rgba(15, 41, 66, 0.78)
+  );
+}
+
+.model-02 .badge {
+  background: #2596be;                           /* [COR] Badge ciano vibrante */
+  color: #ffffff;                                /* [COR] Texto branco no badge */
+  border-radius: 4px;                            /* [TAMANHO] Badge retangular elegante */
+}
+
+.model-02 .mock-previdenciario {
+  left: auto;                                    /* [EFEITO] Posicionamento assimétrico à direita */
+  right: 7%;
+  top: 14%;
+  width: 74%;
+  height: 74%;
+  border-radius: 12px;
+  background: linear-gradient(160deg, rgba(15, 41, 66, 0.94), rgba(24, 65, 98, 0.92)); /* [COR] Fundo escuro safira */
+  color: #f4f9fc;                                /* [COR] Texto claro no mock */
+  border-left: 4px solid #48cae4;                /* [COR] [TAMANHO] Detalhe ciano na lateral esquerda */
+  text-align: right;                             /* [EFEITO] Alinhamento editorial à direita */
+}
+
+.model-02 .mock-previdenciario b {
+  color: #48cae4;                                /* [COR] Sigla em ciano luminoso */
+  font-family: var(--display);
+  letter-spacing: 0.08em;
+}
+
+.model-02 .mock-previdenciario small {
+  color: #9ecae1;                                /* [COR] Categoria em azul claro */
+}
+
+.model-02 .mock-previdenciario strong {
+  color: #ffffff;
+}
+
+.model-02 .mock-previdenciario em {
+  color: #48cae4;                                /* [COR] Destaque em itálico ciano */
+}
+
+.model-02 .mock-previdenciario i {
+  margin-left: auto;                             /* [EFEITO] Linha alinhada à direita */
+  width: 58px;
+  height: 2px;
+  background: linear-gradient(90deg, #48cae4, #90e0ef); /* [COR] Barra horizontal ciano */
+}
+
+.model-02 .model-info {
+  background: #f5fafe;                           /* [COR] Rodapé do card em tom gelo azulado */
+  border-top: 1px solid rgba(37, 150, 190, 0.22);
+}
+
+.model-02 .model-info small {
+  color: #1b6ca8;                                /* [COR] Kicker azul royal */
+}
+
+.model-02 .model-info h3 {
+  color: #0f2942;                                /* [COR] Título em azul safira */
+}
+
+.model-02 .model-info > b {
+  color: #2596be;                                /* [COR] Seta em ciano */
+}
+
+/* =======================================================================
+   [COR] [EFEITO] [TAMANHO] IDENTIDADE EXCLUSIVA — MODELO 03 (EMPRESARIAL)
+   Paleta: Grafite Carvão (#1c2127) + Cobre/Bronze (#c87d4b) + Areia Quente (#f8f4ef)
+   Layout: Moldura arquitetônica centralizada com canto superior destacado e linha bronze
+   ======================================================================= */
+.model-card.model-03 {
+  background: linear-gradient(180deg, #ffffff 0%, #faf6f0 100%); /* [COR] Fundo areia quente */
+  border: 1px solid rgba(200, 125, 75, 0.35);    /* [COR] Borda tom bronze */
+  border-radius: 4px;                            /* [TAMANHO] Cantos mais retos e corporativos */
+}
+
+.model-card.model-03:hover {
+  border-color: #c87d4b;                         /* [COR] Borda bronze no hover */
+  box-shadow: 0 22px 48px rgba(28, 33, 39, 0.18);
+}
+
+.model-03 .art-sand {
+  background: linear-gradient(135deg, #2c2623 0%, #5c3d28 60%, #c87d4b 100%); /* [COR] Gradiente café/bronze */
+}
+
+.model-03 .model-art:after {
+  background: linear-gradient(                   /* [COR] Sobreposição quente escura */
+    180deg,
+    rgba(28, 33, 39, 0.15),
+    rgba(28, 33, 39, 0.75)
+  );
+}
+
+.model-03 .badge {
+  background: #1c2127;                           /* [COR] Badge grafite escuro */
+  color: #e6a87c;                                /* [COR] Texto bronze claro */
+  border: 1px solid rgba(230, 168, 124, 0.45);
+  border-radius: 2px;
+}
+
+.model-03 .mock-empresarial {
+  left: 10%;
+  top: 16%;
+  width: 80%;
+  height: 68%;
+  border-radius: 2px;
+  background: rgba(252, 249, 245, 0.95);         /* [COR] Cartão claro marfim corporativo */
+  color: #1c2127;                                /* [COR] Texto grafite escuro */
+  border-top: 4px solid #c87d4b;                 /* [COR] [TAMANHO] Barra bronze no topo */
+  box-shadow: 0 24px 44px rgba(15, 18, 22, 0.28);
+}
+
+.model-03 .mock-empresarial b {
+  color: #b56532;                                /* [COR] Sigla em bronze intenso */
+  font-family: var(--display);
+  letter-spacing: 0.14em;
+}
+
+.model-03 .mock-empresarial small {
+  color: #7a685c;                                /* [COR] Subtítulo em marrom acinzentado */
+  letter-spacing: 0.2em;
+}
+
+.model-03 .mock-empresarial strong {
+  color: #1c2127;
+  font-family: var(--display);                   /* [FONTE] Tipografia geométrica corporativa */
+  font-weight: 700;
+}
+
+.model-03 .mock-empresarial em {
+  color: #b56532;                                /* [COR] Destaque em itálico bronze */
+}
+
+.model-03 .mock-empresarial i {
+  width: 100%;                                   /* [TAMANHO] [EFEITO] Linha horizontal cheia na base do mock */
+  height: 1px;
+  background: linear-gradient(90deg, #c87d4b, transparent); /* [COR] Degradê bronze */
+}
+
+.model-03 .model-info {
+  background: #fcf9f5;                           /* [COR] Fundo marfim no rodapé do card */
+  border-top: 1px solid rgba(200, 125, 75, 0.25);
+}
+
+.model-03 .model-info small {
+  color: #b56532;                                /* [COR] Kicker bronze */
+}
+
+.model-03 .model-info h3 {
+  color: #1c2127;                                /* [COR] Título em grafite */
+  font-family: var(--display);
+}
+
+.model-03 .model-info > b {
+  color: #b56532;                                /* [COR] Seta em bronze */
+}
+
+/* =======================================================================
+   [COR] [EFEITO] [TAMANHO] IDENTIDADE EXCLUSIVA — MODELO 04 (FAMÍLIA)
+   Paleta: Ameixa/Bordeaux Suave (#4a2545) + Terracota/Rosé (#d9777f) + Creme Rosado (#fdf5f6)
+   Layout: Cartão acolhedor inferior com bordas amplas, tipografia cursiva/serifada e acento rosé
+   ======================================================================= */
+.model-card.model-04 {
+  background: linear-gradient(180deg, #ffffff 0%, #fdf4f5 100%); /* [COR] Fundo creme rosado */
+  border: 1px solid rgba(217, 119, 127, 0.32);   /* [COR] Borda rosé suave */
+  border-radius: 20px;                           /* [TAMANHO] Cantos bem arredondados e acolhedores */
+}
+
+.model-card.model-04:hover {
+  border-color: #c95b68;                         /* [COR] Borda rosé mais viva no hover */
+  box-shadow: 0 22px 48px rgba(74, 37, 69, 0.16);
+}
+
+.model-04 .art-rose {
+  background: linear-gradient(135deg, #4a2545 0%, #8c3b52 55%, #d9777f 100%); /* [COR] Gradiente ameixa/rosé */
+}
+
+.model-04 .model-art:after {
+  background: linear-gradient(                   /* [COR] Sobreposição quente ameixa */
+    180deg,
+    rgba(74, 37, 69, 0.18),
+    rgba(58, 24, 52, 0.74)
+  );
+}
+
+.model-04 .badge {
+  background: #fdf2f4;                           /* [COR] Badge claro rosado */
+  color: #6d2842;                                /* [COR] Texto vinho/ameixa */
+  border-radius: 999px;                          /* [TAMANHO] Badge em formato pílula */
+}
+
+.model-04 .mock-familia {
+  left: 12%;
+  top: 22%;
+  width: 76%;
+  height: 64%;
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(255, 250, 251, 0.95), rgba(251, 235, 238, 0.94)); /* [COR] Fundo creme suave */
+  color: #3b1d36;                                /* [COR] Texto vinho escuro acolhedor */
+  border-bottom: 4px solid #d9777f;              /* [COR] [TAMANHO] Faixa rosé na base */
+  box-shadow: 0 22px 40px rgba(58, 24, 52, 0.22);
+}
+
+.model-04 .mock-familia b {
+  color: #b84a5a;                                /* [COR] Sigla em rosé/vinho */
+  font-style: italic;
+}
+
+.model-04 .mock-familia small {
+  color: #8c5a6b;                                /* [COR] Categoria em tom malva/rosé */
+  margin-top: 18px;
+}
+
+.model-04 .mock-familia strong {
+  color: #3b1d36;
+  font-style: italic;                            /* [FONTE] [EFEITO] Itálico elegante no título do mock */
+}
+
+.model-04 .mock-familia em {
+  color: #b84a5a;                                /* [COR] Destaque em rosé profundo */
+}
+
+.model-04 .mock-familia i {
+  width: 32px;
+  height: 3px;
+  border-radius: 999px;
+  background: #d9777f;                           /* [COR] Barra arredondada rosé */
+  margin-top: 18px;
+}
+
+.model-04 .model-info {
+  background: #fdf6f7;                           /* [COR] Rodapé rosado claríssimo */
+  border-top: 1px solid rgba(217, 119, 127, 0.25);
+}
+
+.model-04 .model-info small {
+  color: #b84a5a;                                /* [COR] Kicker rosé/vinho */
+}
+
+.model-04 .model-info h3 {
+  color: #3b1d36;                                /* [COR] Título em ameixa escuro */
+}
+
+.model-04 .model-info > b {
+  color: #b84a5a;                                /* [COR] Seta em rosé/vinho */
+}
+
+.model-info {
+  padding: 18px 21px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  border-top: 1px solid #ece9e2;
+}
+
+.model-info small {
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.model-info h3 {
+  font: 600 22px var(--serif);
+  margin-top: 5px;
+}
+
+.model-info p {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.model-info > b {
+  font-size: 22px;
+  color: var(--blue);
+}
+
+/* -----------------------------------------------------------------------
+   [COR] [TAMANHO] [EFEITO] PREÇOS, PROCESSO, FAQ E CONTATO
+   ----------------------------------------------------------------------- */
+.pricing {
+  padding: 120px 0;
+  background: #F7F8FA;                           /* [COR] Fundo da seção de preços */
+}
+
+.pricing-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  align-items: end;
+}
+
+.pricing-head > p {
+  max-width: 370px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.price-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  margin-top: 55px;
+}
+
+.price-card {
+  background: #ffffff;                           /* [COR] Fundo do card de preço */
+  border: 1px solid #dce2e1;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 18px 45px rgba(30, 53, 69, 0.08);
+  transition: 0.35s ease;
+}
+
+.price-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 60px rgba(30, 53, 69, 0.12);
+}
+
+.price-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  font-weight: 800;
+}
+
+.price-top b {
+  background: #e8f0ed;                           /* [COR] Selo de destaque do plano */
+  color: #4d6d60;
+  padding: 7px 9px;
+  border-radius: 20px;
+  font-size: 7px;
+}
+
+.price-card h3 {
+  font: 600 28px var(--serif);
+  margin-top: 28px;
+}
+
+.price {
+  font: 600 58px var(--serif);
+  margin: 5px 0;
+  color: var(--navy);                            /* [COR] Destaque numérico do preço */
+}
+
+.price small {
+  font: 600 10px var(--sans);
+  color: var(--muted);
+}
+
+.price-note {
+  font-size: 11px;
+  color: var(--muted);
+  max-width: 500px;
+}
+
+.price-card ul {
+  list-style: none;
+  margin: 25px 0;
+}
+
+.price-card li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eeeeee;
+  font-size: 11px;
+}
+
+.full {
+  width: 100%;
+}
+
+.price-side {
+  background: var(--navy);                       /* [COR] Fundo do bloco lateral de preço */
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.price-side span {
+  font-size: 8px;
+  letter-spacing: 0.17em;
+  color: #c7d4da;
+  font-weight: 800;
+}
+
+.price-side h3 {
+  font: 500 32px / 1.15 var(--serif);
+  margin-top: 15px;
+}
+
+.price-side p {
+  color: #c6d0d4;
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 12px;
+}
+
+.process {
+  padding: 125px 0;
+  background: #ffffff;                           /* [COR] Fundo da seção de processo */
+}
+
+.steps {
+  margin-top: 58px;
+  border-top: 1px solid var(--line);
+}
+
+.steps article {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 30px;
+  padding: 27px 0;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.steps article:hover {
+  padding-left: 12px;
+  background: linear-gradient(
+    90deg,
+    rgba(177, 138, 72, 0.055),
+    transparent 55%
+  );
+}
+
+.steps article > b {
+  font: italic 22px var(--serif);
+  color: var(--gold);
+}
+
+.steps h3 {
+  font: 600 21px var(--display);
+}
+
+.steps p {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.faq {
+  padding: 120px 0;
+  background: var(--bg);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 0.65fr 1.35fr;
+  gap: 90px;
+}
+
+.faq-list {
+  border-top: 1px solid var(--line);
+}
+
+details {
+  border-bottom: 1px solid var(--line);
+  padding: 21px 0;
+}
+
+summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  font: 500 20px var(--serif);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary:after {
+  content: "+";
+  font-family: var(--sans);
+  color: var(--gold);
+}
+
+details[open] summary:after {
+  content: "−";
+}
+
+details p {
+  padding-top: 12px;
+  max-width: 650px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.contact {
+  padding: 105px 0;
+  background: var(--sand);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 70px;
+  align-items: end;
+}
+
+.contact h2 {
+  font: 600 clamp(40px, 5vw, 62px) / 1.04 var(--serif);
+  margin: 18px 0;
+}
+
+.contact p {
+  max-width: 650px;
+  color: #6d6b65;
+  font-size: 14px;
+}
+
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  background: var(--navy);
+  color: #ffffff;
+  padding: 16px 22px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: 0.25s ease;
+}
+
+.contact-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(30, 53, 69, 0.14);
+}
+
+/* -----------------------------------------------------------------------
+   [COR] [TAMANHO] [EFEITO] RODAPÉ E BOTÃO FLUTUANTE WHATSAPP
+   ----------------------------------------------------------------------- */
+footer {
+  background: #1b252c;                           /* [COR] Fundo escuro do rodapé */
+  color: #cfd7db;                                /* [COR] Texto do rodapé */
+}
+
+.footer-top {
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-top nav {
+  display: flex;
+  gap: 25px;
+}
+
+.footer-top nav a {
+  font-size: 10px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 18px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 12px;
+  color: #89949a;
+}
+
+.floating {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 58px;                                   /* [TAMANHO] Diâmetro do botão WhatsApp */
+  height: 58px;
+  border-radius: 50%;
+  background: #25D366;                           /* [COR] Verde oficial do WhatsApp */
+  display: grid;
+  place-items: center;
+  z-index: 80;
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.25);
+  transition: 0.3s ease;
+}
+
+.floating:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(37, 211, 102, 0.34);
+}
+
+.floating:before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  border-radius: 50%;
+  animation: whatsPulse 2.5s ease-out infinite; /* [EFEITO] Pulso ao redor do botão */
+}
+
+.whatsapp-icon {
+  width: 28px;
+  height: 28px;
+  fill: #ffffff;
+}
+
+/* -----------------------------------------------------------------------
+   [EFEITO] ANIMAÇÕES KEYFRAMES
+   ----------------------------------------------------------------------- */
+@keyframes priceFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes whatsPulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.65;
+  }
+  70%, 100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+/* -----------------------------------------------------------------------
+   [TAMANHO] [EFEITO] RESPONSIVIDADE (TABLET E CELULAR)
+   ----------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+
+  .menu {
     display: block;
-    object-fit: cover;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 120px;
+  }
+
+  .intro-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .model-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-head {
+    display: block;
+  }
+
+  .pricing-head > p {
+    margin-top: 25px;
+  }
+
+  .price-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .heading-row {
+    display: block;
+  }
+
+  .heading-row > p {
+    margin-top: 25px;
+  }
+
+  .contact-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top {
+    flex-wrap: wrap;
+    padding: 30px 0;
+  }
 }
 
-/* Localização */
-.stats-section {
-    background: var(--bg-section-alt);
-    padding: 4.5rem 0;
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
+@media (max-width: 680px) {
+  .container {
+    width: min(100% - 30px, 600px);
+  }
+
+  .logo .site-logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .footer-logo .site-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .logo-text {
+    font-size: 12px;
+  }
+
+  .logo-text small {
+    font-size: 6px;
+  }
+
+  .hero {
+    padding-top: 105px;
+    padding-bottom: 70px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+  }
+
+  .browser-body {
+    height: 420px;
+  }
+
+  .mini-copy {
+    left: 30px;
+    top: 120px;
+  }
+
+  .mini-copy h2 {
+    font-size: 45px;
+  }
+
+  .floating-price {
+    right: 0;
+  }
+
+  .intro,
+  .models,
+  .pricing,
+  .process,
+  .faq {
+    padding: 80px 0;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-grid article {
+    border-left: 1px solid var(--line);
+  }
+
+  .model-art {
+    height: 330px;
+  }
+
+  .mock {
+    padding: 24px;
+  }
+
+  .mock strong {
+    font-size: 26px;
+  }
+
+  .price-card,
+  .price-side {
+    padding: 28px;
+  }
+
+  .footer-top {
+    display: block;
+  }
+
+  .footer-top nav {
+    margin: 25px 0;
+    flex-wrap: wrap;
+  }
+
+  .footer-bottom {
+    display: block;
+  }
+
+  .footer-bottom span {
+    display: block;
+    margin-top: 7px;
+  }
 }
 
-.stats-section h2 {
-    font-size: 2.3rem;
-    margin-bottom: 1rem;
-    color: var(--primary-red);
-}
+/* -----------------------------------------------------------------------
+   [EFEITO] ACESSIBILIDADE — REDUÇÃO DE MOVIMENTO
+   ----------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-.location-text {
-    font-size: 1.2rem;
-    color: var(--text-muted);
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
-
-.location-text strong {
-    color: var(--text-dark);
-}
-
-/* Footer */
-.footer {
-    background: #0F172A;
-    color: #FFFFFF;
-    padding: 4.5rem 0 2rem;
-}
-
-.footer .logo-title {
-    color: #FFFFFF;
-}
-
-.footer .logo-sub {
-    color: var(--border-color);
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.footer-contact h3 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    color: #FFFFFF;
-    font-family: var(--font-heading);
-}
-
-.footer-contact p {
-    color: #94A3B8;
-    font-size: 0.95rem;
-    margin-bottom: 0.8rem;
-}
-
-.copyright {
-    border-top: 1px solid #1E293B;
-    padding-top: 1.5rem;
-    color: #94A3B8;
-    font-size: 0.8rem;
-}
-
-/* Botão Flutuante do WhatsApp */
-.float-wa {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #25D366;
-    color: #FFFFFF;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.2rem;
-    text-decoration: none;
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-    z-index: 1000;
-    transition: transform 0.3s ease;
-}
-
-.float-wa:hover {
-    transform: scale(1.1);
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-    .nav-links { display: none; }
-    .hero-content h1 { font-size: 1.8rem; }
-    .about-grid { grid-template-columns: 1fr; }
-    .btn-red { width: 100%; text-align: center; }
-}
-
-.hero-content h1 .texto-preto {
-    color: #000000;
-}
-
-.card-box {
-    border: 1px solid #e2e8f0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.06); }
-    100% { transform: scale(1); }
-}
-
-.float-wa {
-    animation: pulse 3s infinite;
-}
-
-/* 1. Animação de pulsação contínua no botão flutuante do WhatsApp (canto inferior direito) */
-@keyframes pulsarWhatsApp {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-    50% {
-        transform: scale(1.12);
-        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-}
-
-.float-wa {
-    animation: pulsarWhatsApp 2s infinite ease-in-out;
-    transition: transform 0.3s ease;
-}
-
-.float-wa:hover {
-    animation: none;
-    transform: scale(1.2);
-}
-
-/* 2. Efeito de zoom na foto da advogada ao passar o mouse */
-.about-photo-area .photo-card {
-    overflow: hidden; /* Mantém os cantos arredondados sem vazar a imagem */
-}
-
-.about-photo-area .lawyer-photo {
-    transition: transform 0.4s ease;
-}
-
-.about-photo-area .photo-card:hover .lawyer-photo,
-.about-photo-area .lawyer-photo:hover {
-    transform: scale(1.25); /* Aumenta a foto em 8% */
-}
-
-/* Barra de topo de atendimento rápido */
-.top-bar-alert {
-    background-color: #111827;
-    color: #ffffff;
-    text-align: center;
-    padding: 8px 15px;
-    font-size: 0.85rem;
-    font-weight: 500;
-}
-
-.top-bar-alert span {
-    color: #25d366;
-    font-weight: 700;
-}
-
-.security-badges {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 10px;
-    font-size: 0.8rem;
-    color: #64748b;
-}
-
-.security-badges i {
-    color: #10b981;
-    margin-right: 4px;
-}
-
-.card-box {
-    border: 1px solid #e2e8f0;
-    transition: all 0.3s ease-in-out;
-}
-
-.card-box:hover {
-    border-color: #c5a059; /* Cor dourada refinada */
-    box-shadow: 0 10px 20px rgba(197, 160, 89, 0.15);
-}
-
-.btn-red {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-red::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -60%;
-    width: 20%;
-    height: 200%;
-    background: rgba(255, 255, 255, 0.25);
-    transform: rotate(30deg);
-    transition: all 0.6s ease;
-}
-
-.btn-red:hover::after {
-    left: 120%;
-}
-

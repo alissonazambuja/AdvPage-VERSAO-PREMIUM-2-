@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/png" href="./favicon.png">
-  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="./style.css">
 
   <script>
     document.documentElement.classList.add('js');
@@ -32,12 +32,11 @@
 
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- CABEÇALHO -->
   <header class="header">
     <div class="container nav">
 
       <a href="#inicio" class="logo" aria-label="AdvPage - Página inicial">
-        <img src="./img/logo_advpage.jpg" alt="Logo AdvPage" class="site-logo" width="48" height="48">
+        <img src="./img/logo_advpage.jpg" alt="Logo AdvPage" class="site-logo" width="48" height="48" draggable="false" onclick="event.stopPropagation(); event.preventDefault(); return false;">
         <span class="logo-text">
           ADVPAGE
           <small>LANDING PAGES PARA ADVOGADOS</small>
@@ -54,7 +53,8 @@
         <a href="#solucao">A solução</a>
         <a href="#modelos">Modelos</a>
         <a href="#precos">Preços</a>
-        <a href="#outras-areas" onmouseover="this.style.color='#C5A059'; this.style.opacity='0.8';" onmouseout="this.style.color='#0F172A'; this.style.opacity='1';" style="color: #0F172A; font-weight: 600; transition: color 0.2s ease, opacity 0.2s ease;">Atende outra área?</a>        <a href="#processo">Como funciona</a>
+        <a href="#outras-areas" onmouseover="this.style.color='#C5A059'; this.style.opacity='0.8';" onmouseout="this.style.color='#0F172A'; this.style.opacity='1';" style="color: #0F172A; font-weight: 600; transition: color 0.2s ease, opacity 0.2s ease;">Atende outra área?</a>
+        <a href="#processo">Como funciona</a>
         <a href="#faq">Dúvidas</a>
         <a href="#contato" class="nav-button">Falar no WhatsApp ↗</a>
       </nav>
@@ -64,7 +64,6 @@
 
   <main id="conteudo">
 
-    <!-- APRESENTAÇÃO PRINCIPAL -->
     <section class="hero" id="inicio">
       <div class="hero-shape" aria-hidden="true"></div>
 
@@ -132,7 +131,6 @@
       </div>
     </section>
 
-    <!-- SOLUÇÃO -->
     <section class="intro" id="solucao">
       <div class="container intro-grid">
         <div class="section-kicker">POR QUE ADVPAGE?</div>
@@ -153,7 +151,6 @@
       </div>
     </section>
 
-    <!-- BENEFÍCIOS -->
     <section class="features" aria-label="Benefícios da AdvPage">
       <div class="container feature-grid">
 
@@ -184,7 +181,6 @@
       </div>
     </section>
 
-    <!-- PORTFÓLIO modelos-->
     <section class="models" id="modelos">
       <div class="container">
 
@@ -202,10 +198,9 @@
 
         <div class="model-grid">
 
-          <!-- MODELO 01 -->
           <a class="model-card" href="./modelos/01-projeto-real/index.html" aria-label="Conhecer modelo de advocacia trabalhista">
             <div class="model-art art-real">
-              <img src="./img/advogado-modelo-01.webp" alt="Imagem do modelo de advocacia trabalhista" loading="lazy" decoding="async">
+              <img src="./img/advogado-modelo-01.webp" alt="Imagem do modelo de advocacia trabalhista" loading="lazy" decoding="async" draggable="false" onclick="event.stopPropagation(); event.preventDefault(); return false;">
               <span class="badge">PROJETO REAL</span>
 
               <div class="mock">
@@ -226,14 +221,13 @@
             </div>
           </a>
 
-          <!-- MODELO 02 -->
-          <a class="model-card" href="./modelos/02-previdenciario/index.html" aria-label="Conhecer modelo de advocacia previdenciária">
+          <a class="model-card modelo-2" href="./modelos/02-previdenciario/index.html" aria-label="Conhecer modelo de advocacia previdenciária">
             <div class="model-art art-blue">
-              <img src="./img/advogado-modelo-02.jpg" alt="Imagem do modelo de advocacia previdenciária" loading="lazy" decoding="async">
-              <span class="badge">DEMONSTRATIVO</span>
+              <img src="./img/advogado-modelo-02.jpg" alt="Imagem do modelo de advocacia previdenciária" loading="lazy" decoding="async" draggable="false" onclick="event.stopPropagation(); event.preventDefault(); return false;">
+              <span class="badge">ATUAÇÃO PREVIDENCIÁRIA</span>
 
-              <div class="mock light">
-                <b>RA</b>
+              <div class="mock mock-2">
+                <b>INSS · RPPS</b>
                 <small>ADVOCACIA PREVIDENCIÁRIA</small>
                 <strong>Direito<br><em>Previdenciário.</em></strong>
                 <i></i>
@@ -242,22 +236,21 @@
 
             <div class="model-info">
               <div>
-                <small>02 · DEMONSTRATIVO</small>
+                <small>02 · SAFIRA &amp; CIANO</small>
                 <h3>Previdenciário</h3>
-                <p>Institucional · Elegante · Direto</p>
+                <p>Aposentadorias · Benefícios · Revisões</p>
               </div>
               <b aria-hidden="true">↗</b>
             </div>
           </a>
 
-          <!-- MODELO 03 -->
-          <a class="model-card" href="./modelos/03-empresarial/index.html" aria-label="Conhecer modelo de advocacia empresarial">
+          <a class="model-card modelo-3" href="./modelos/03-empresarial/index.html" aria-label="Conhecer modelo de advocacia empresarial">
             <div class="model-art art-sand">
-              <img src="./img/advogado-modelo-03.jpg" alt="Imagem do modelo de advocacia empresarial" loading="lazy" decoding="async">
-              <span class="badge">DEMONSTRATIVO</span>
+              <img src="./img/advogado-modelo-03.jpg" alt="Imagem do modelo de advocacia empresarial" loading="lazy" decoding="async" draggable="false" onclick="event.stopPropagation(); event.preventDefault(); return false;">
+              <span class="badge">CORPORATIVO &amp; B2B</span>
 
-              <div class="mock light">
-                <b>AL</b>
+              <div class="mock mock-3">
+                <b>B2B · M&amp;A</b>
                 <small>ADVOCACIA EMPRESARIAL</small>
                 <strong>Direito<br><em>Empresarial.</em></strong>
                 <i></i>
@@ -266,23 +259,22 @@
 
             <div class="model-info">
               <div>
-                <small>03 · DEMONSTRATIVO</small>
+                <small>03 · GRAFITE &amp; BRONZE</small>
                 <h3>Empresarial</h3>
-                <p>Corporativo · Premium · Sólido</p>
+                <p>Contratos · Societário · Consultoria</p>
               </div>
               <b aria-hidden="true">↗</b>
             </div>
           </a>
 
-          <!-- MODELO 04 -->
-          <a class="model-card" href="./modelos/04-familia/index.html" aria-label="Conhecer modelo de advocacia de família">
+          <a class="model-card modelo-4" href="./modelos/04-familia/index.html" aria-label="Conhecer modelo de advocacia de família">
             <div class="model-art art-rose">
-              <img src="./img/advogado-modelo-04.jpg" alt="Imagem do modelo de advocacia de família" loading="lazy" decoding="async">
-              <span class="badge">DEMONSTRATIVO</span>
+              <img src="./img/advogado-modelo-04.jpg" alt="Imagem do modelo de advocacia de família" loading="lazy" decoding="async" draggable="false" onclick="event.stopPropagation(); event.preventDefault(); return false;">
+              <span class="badge">ATENDIMENTO HUMANO</span>
 
-              <div class="mock light">
-                <b>MF</b>
-                <small>ADVOCACIA DE FAMÍLIA</small>
+              <div class="mock mock-4">
+                <b>FAMÍLIA &amp; SUCESSÕES</b>
+                <small>DIREITO DE FAMÍLIA</small>
                 <strong>Direito<br><em>de Família.</em></strong>
                 <i></i>
               </div>
@@ -290,9 +282,9 @@
 
             <div class="model-info">
               <div>
-                <small>04 · DEMONSTRATIVO</small>
+                <small>04 · AMEIXA &amp; ROSÉ</small>
                 <h3>Família</h3>
-                <p>Humano · Elegante · Acolhedor</p>
+                <p>Guarda · Inventário · Planejamento</p>
               </div>
               <b aria-hidden="true">↗</b>
             </div>
@@ -301,34 +293,31 @@
         </div>
       </div>
 
-      <!-- Secção Adicional: Outras Áreas (Destaque & WhatsApp) -->
-<!-- Secção Adicional: Outras Áreas (Destaque Escuro & WhatsApp) -->
-<section id="outras-areas" style="padding: 45px 20px; background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%); border-top: 2px solid #B8860B; border-bottom: 2px solid #B8860B; margin: 40px 0; scroll-margin-top: 40px;">
-  <div style="max-width: 640px; margin: 0 auto;">
-    <div style="background: #FFFFFF; border: 2.5px solid #8B6508; border-radius: 14px; padding: 22px 26px; box-shadow: 0 12px 30px rgba(139, 101, 8, 0.22); text-align: left;">
-      <div style="font-weight: 700; color: #0F172A; font-size: 17px; display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px;">
-        <span style="display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-block; width: 10px; height: 10px; background-color: #8B6508; border-radius: 50%; box-shadow: 0 0 0 4px rgba(139, 101, 8, 0.25);"></span>
-          Atende outra área? Fale conosco
-        </span>
-        <span style="font-size: 12px; color: #FFFFFF; background: #8B6508; font-weight: 600; padding: 5px 12px; border-radius: 20px;">Especial para profissionais</span>
-      </div>
-      
-      <div style="border-top: 1px solid #E2E8F0; padding-top: 14px;">
-        <p style="color: #1E293B; font-size: 15px; line-height: 1.6; margin-bottom: 18px; font-weight: 500;">
-          Sim! Embora tenhamos modelos focados no público jurídico, desenvolvemos landing pages de alta conversão sob medida para <strong>psicólogos, dentistas, médicos, arquitetos, engenheiros e outros profissionais liberais</strong>.
-        </p>
-        
-        <a href="https://wa.me/5551994525272?text=Ol%C3%A1%21%20Gostaria%20de%20uma%20landing%20page%20para%20outra%20%C3%A1rea%20profissional." target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: #25D366; color: #FFFFFF; font-weight: 700; font-size: 14px; padding: 13px 22px; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3); transition: background-color 0.2s ease;">
-          <span>Chamar no WhatsApp da outra área ↗</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+      <section id="outras-areas" style="padding: 45px 20px; background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%); border-top: 2px solid #B8860B; border-bottom: 2px solid #B8860B; margin: 40px 0; scroll-margin-top: 40px;">
+        <div style="max-width: 640px; margin: 0 auto;">
+          <div style="background: #FFFFFF; border: 2.5px solid #8B6508; border-radius: 14px; padding: 22px 26px; box-shadow: 0 12px 30px rgba(139, 101, 8, 0.22); text-align: left;">
+            <div style="font-weight: 700; color: #0F172A; font-size: 17px; display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px;">
+              <span style="display: flex; align-items: center; gap: 10px;">
+                <span style="display: inline-block; width: 10px; height: 10px; background-color: #8B6508; border-radius: 50%; box-shadow: 0 0 0 4px rgba(139, 101, 8, 0.25);"></span>
+                Atende outra área? Fale conosco
+              </span>
+              <span style="font-size: 12px; color: #FFFFFF; background: #8B6508; font-weight: 600; padding: 5px 12px; border-radius: 20px;">Especial para profissionais</span>
+            </div>
+
+            <div style="border-top: 1px solid #E2E8F0; padding-top: 14px;">
+              <p style="color: #1E293B; font-size: 15px; line-height: 1.6; margin-bottom: 18px; font-weight: 500;">
+                Sim! Embora tenhamos modelos focados no público jurídico, desenvolvemos landing pages de alta conversão sob medida para <strong>psicólogos, dentistas, médicos, arquitetos, engenheiros e outros profissionais liberais</strong>.
+              </p>
+
+              <a href="https://wa.me/5551994525272?text=Ol%C3%A1%21%20Gostaria%20de%20uma%20landing%20page%20para%20outra%20%C3%A1rea%20profissional." target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: #25D366; color: #FFFFFF; font-weight: 700; font-size: 14px; padding: 13px 22px; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3); transition: background-color 0.2s ease;">
+                <span>Chamar no WhatsApp da outra área ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
-    <!-- PREÇOS -->
     <section class="pricing" id="precos">
       <div class="container">
 
@@ -397,7 +386,6 @@
       </div>
     </section>
 
-    <!-- PROCESSO -->
     <section class="process" id="processo">
       <div class="container">
 
@@ -451,7 +439,6 @@
       </div>
     </section>
 
-    <!-- PERGUNTAS FREQUENTES -->
     <section class="faq" id="faq">
       <div class="container faq-grid">
 
@@ -491,7 +478,6 @@
       </div>
     </section>
 
-    <!-- CONTATO -->
     <section class="contact" id="contato">
       <div class="container contact-inner">
 
@@ -513,12 +499,11 @@
 
   </main>
 
-  <!-- RODAPÉ -->
   <footer>
     <div class="container footer-top">
 
       <a href="#inicio" class="logo footer-logo" aria-label="AdvPage - Voltar ao início">
-        <img src="./img/logo_advpage.jpg" alt="Logo AdvPage" class="site-logo" width="48" height="48" loading="lazy">
+        <img src="./img/logo_advpage.jpg" alt="Logo AdvPage" class="site-logo" width="48" height="48" loading="lazy" draggable="false" onclick="event.stopPropagation(); event.preventDefault(); return false;">
         <span class="logo-text">
           ADVPAGE
           <small>LANDING PAGES PARA ADVOGADOS</small>
@@ -547,17 +532,15 @@
     </div>
   </footer>
 
-  <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
   <a class="floating" href="https://wa.me/5551994525272?text=Ol%C3%A1%21%20Quero%20conhecer%20a%20AdvPage." target="_blank" rel="noopener noreferrer" aria-label="Falar com a AdvPage pelo WhatsApp">
-    <svg class="whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M20.52 3.48A11.87 11.87 0 0 0 12.08 0C5.53 0 .2 5.33.2 11.88c0 2.09.55 4.13 1.59 5.93L.1 24l6.33-1.66a11.88 11.88 0 0 0 5.65 1.43h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.15-3.45-8.41ZM12.09 21.7h-.01a9.82 9.82 0 0 1-5.01-1.37l-.36-.21-3.75.98 1-3.66-.23-.38a9.82 9.82 0 0 1-1.51-5.18C2.22 6.47 6.64 2.05 12.08 2.05c2.64 0 5.12 1.03 6.98 2.9a9.8 9.8 0 0 1 2.9 6.98c0 5.44-4.42 9.77-9.87 9.77Zm5.39-7.34c-.29-.15-1.72-.85-1.99-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.94 1.14-.17.2-.35.22-.64.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.35.44-.52.15-.17.2-.35.3-.52.15-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.29-1.03 1.01-1.03 2.47s1.05 2.86 1.2 3.05c.2.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.68.61.7.22 1.34.19 1.84.12.56-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.57-.35Z"/>
+    <svg class="whatsapp-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M18.04 5C10.86 5 5.02 10.76 5.02 17.85c0 2.26.6 4.47 1.73 6.41L5 31l6.9-1.78a13.06 13.06 0 0 0 6.14 1.53h.01c7.18 0 13.02-5.76 13.02-12.85C31.07 10.76 25.22 5 18.04 5Zm0 23.58h-.01a10.8 10.8 0 0 1-5.51-1.5l-.4-.23-4.1 1.06 1.1-3.99-.26-.41a10.7 10.7 0 0 1-1.66-5.64c0-5.91 4.88-10.72 10.92-10.72 2.91 0 5.65 1.12 7.71 3.14a10.57 10.57 0 0 1 3.21 7.58c0 5.91-4.88 10.75-10.9 10.75Z" fill="#FFFFFF"/>
+      <path d="M24.02 20.52c-.33-.16-1.94-.95-2.24-1.06-.3-.11-.52-.16-.74.16-.22.33-.85 1.06-1.04 1.27-.19.22-.38.24-.71.08-.33-.16-1.38-.5-2.63-1.59-.97-.85-1.63-1.91-1.82-2.23-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.55.11-.22.05-.41-.03-.57-.08-.16-.74-1.77-1.01-2.42-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.41-.3.33-1.15 1.12-1.15 2.73s1.18 3.16 1.34 3.38c.16.22 2.32 3.5 5.62 4.9.79.34 1.4.54 1.88.69.79.25 1.51.21 2.08.13.63-.09 1.94-.78 2.21-1.53.27-.75.27-1.39.19-1.53-.08-.14-.3-.22-.63-.38Z" fill="#FFFFFF"/>
     </svg>
   </a>
 
-  <!-- SCRIPT PRINCIPAL -->
   <script src="./script.js" defer></script>
 
-  <!-- MENU E ANO -->
   <script>
     (function () {
       'use strict';
@@ -602,7 +585,6 @@
     })();
   </script>
 
-  <!-- EFEITOS DE ENTRADA AO ROLAR -->
   <script id="advpage-scroll-effects">
     document.addEventListener("DOMContentLoaded", function () {
       const selectors = [

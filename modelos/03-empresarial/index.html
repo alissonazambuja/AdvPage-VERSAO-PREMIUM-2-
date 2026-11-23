@@ -1,63 +1,1030 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- [ARQUIVO]: modelos/03-empresarial/index.html (MODELO 03 — NÃO É O PRINCIPAL DA RAIZ) -->
+  <!-- [CONFIG] Codificação, responsividade, indexação e cor da barra do navegador -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1c2127"> <!-- [COR] Cor da barra superior no celular -->
 
+  <!-- [TEXTO] Título e descrição para SEO/compartilhamento -->
   <title>Direito Empresarial | Assessoria Jurídica Estratégica</title>
   <meta name="description" content="Assessoria jurídica empresarial para empresas e empreendedores. Conheça as áreas de atuação e entre em contato para conversar sobre sua necessidade.">
-  <meta name="theme-color" content="#142b3b">
 
-  <!-- LOGO/FAVICON: o arquivo deve existir na pasta img deste modelo -->
-  <!-- Fontes -->
+  <!-- [FONTE] Fontes do Google Fonts e ícones FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Ícones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- CSS principal do Modelo 03 -->
+  <!-- [FOTO] [ARQUIVO] Favicon e folha de estilo externa do Modelo 03 -->
+  <link rel="icon" type="image/png" href="../../favicon -02.jpeg">
   <link rel="stylesheet" href="/modelos/03-empresarial/style.css">
 
   <!--
-    PERSONALIZAÇÃO RÁPIDA:
-    FOTO: modelos/03-empresarial/img/advogado-modelo-03.jpg
-    LOGO: modelos/03-empresarial/img/logo.webp
-    WhatsApp: procure por 5551994525272 neste arquivo e no script.js.
-    Troque o telefone pelo número do profissional, incluindo o código do país e DDD.
+    [TEXTO] [FOTO] [LINK] PERSONALIZAÇÃO RÁPIDA DO MODELO 03:
+    FOTO: img/foto1.jpg (ou img/advogado-modelo-03.jpg — atualize o src na seção .hero-visual)
+    LOGO: img/logo.webp (na pasta img deste modelo)
+    WhatsApp: procure por 5551994525272 neste arquivo e no script.js e troque pelo número do escritório.
   -->
-<link rel="icon" type="image/png" href="../../favicon -02.jpeg">
+
+  <style>
+    /* =====================================================================
+       [ARQUIVO]: modelos/03-empresarial/index.html (CSS DO MODELO 03)
+       [FINALIDADE]: Garante identidade visual corporativa (grafite, cobre/bronze
+       e marfim), faixa superior com botão de voltar, ajuste de enquadramento
+       da foto no PC e efeitos nos cartões (.service-card).
+       [ATALHOS DE BUSCA - CTRL + F]:
+         - [COR]     -> cores, fundos, bordas e sombras
+         - [TAMANHO] -> tamanhos, espaçamentos, alturas e cantos
+         - [FOTO]    -> imagens (logo, foto do profissional) e enquadramento no PC
+         - [TEXTO]   -> fontes, pesos e alinhamentos de texto
+         - [EFEITO]  -> transições, hover e brilhos
+         - [LINK]    -> links e botões (incluindo botão de voltar)
+       ===================================================================== */
+
+    /* -------------------------------------------------------------------
+       [COR] [FONTE] [TAMANHO] VARIÁVEIS DO MODELO 03 (GRAFITE & BRONZE)
+       ------------------------------------------------------------------- */
+    :root {
+      --m3-fundo: #f6f4f0;                       /* [COR] Fundo marfim/areia corporativo */
+      --m3-branco: #ffffff;                      /* [COR] Fundo claro de cartões e blocos */
+      --m3-grafite: #1c2127;                     /* [COR] Grafite escuro principal */
+      --m3-grafite-suave: #2b323b;               /* [COR] Grafite secundário */
+      --m3-bronze: #b56532;                      /* [COR] Cobre/bronze de destaque */
+      --m3-bronze-claro: #e6a87c;                /* [COR] Bronze claro sobre fundos escuros */
+      --m3-texto: #2c333b;                       /* [COR] Cor principal de texto */
+      --m3-texto-muted: #5f6872;                 /* [COR] Cor secundária de descrições */
+      --m3-borda: rgba(181, 101, 50, 0.22);      /* [COR] Borda sutil em tom bronze */
+      --m3-fonte-titulo: 'Manrope', Arial, sans-serif; /* [FONTE] Fonte corporativa de títulos */
+      --m3-fonte-corpo: 'DM Sans', Arial, sans-serif;   /* [FONTE] Fonte limpa para leitura */
+    }
+
+    /* -------------------------------------------------------------------
+       [TAMANHO] [EFEITO] RESET E ESTRUTURA BASE
+       ------------------------------------------------------------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;                   /* [EFEITO] Rolagem suave */
+    }
+
+    body {
+      font-family: var(--m3-fonte-corpo);        /* [FONTE] Fonte padrão */
+      background-color: var(--m3-fundo);         /* [COR] Fundo do site */
+      color: var(--m3-texto);                    /* [COR] Cor do texto */
+      line-height: 1.65;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 40px));      /* [TAMANHO] Largura máxima e margens laterais */
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 12px;
+      top: -50px;
+      z-index: 200;
+      background-color: var(--m3-grafite);
+      color: var(--m3-branco);
+      padding: 10px 14px;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    /* -------------------------------------------------------------------
+       [COR] [TAMANHO] [LINK] BARRA SUPERIOR E CABEÇALHO (.demo-bar + .site-header)
+       ------------------------------------------------------------------- */
+    .demo-bar {
+      background-color: var(--m3-grafite);       /* [COR] Fundo grafite da faixa superior */
+      color: var(--m3-branco);
+      border-bottom: 2px solid var(--m3-bronze); /* [COR] [TAMANHO] Linha bronze na faixa */
+      padding: 9px 0;                           /* [TAMANHO] Altura da barra superior */
+      font-size: 0.84rem;
+    }
+
+    .demo-bar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* [LINK] [COR] [TAMANHO] [EFEITO] Botão de voltar para a AdvPage */
+    .demo-bar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 4px;
+      background-color: rgba(230, 168, 124, 0.14); /* [COR] Fundo suave do botão voltar */
+      color: var(--m3-bronze-claro);             /* [COR] Texto do botão voltar */
+      border: 1px solid rgba(230, 168, 124, 0.45);
+      text-decoration: none;
+      font-weight: 700;
+      transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+
+    .demo-bar a:hover {
+      background-color: var(--m3-bronze);        /* [COR] Fundo bronze no hover */
+      color: var(--m3-branco);
+      transform: translateX(-2px);               /* [EFEITO] Desloca levemente à esquerda */
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background-color: rgba(255, 255, 255, 0.96); /* [COR] Fundo claro do cabeçalho */
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--m3-borda);
+      padding: 12px 0;
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--m3-grafite);
+    }
+
+    /* [FOTO] [TAMANHO] Tamanho da logo no cabeçalho */
+    .brand-logo {
+      height: 40px;                              /* [TAMANHO] Altura da logo */
+      width: auto;                               /* [TAMANHO] Largura proporcional */
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-fallback {
+      display: none;
+      flex-direction: column;
+      font-family: var(--m3-fonte-titulo);
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      color: var(--m3-grafite);
+    }
+
+    .brand-fallback span {
+      font-size: 0.68rem;
+      color: var(--m3-bronze);
+      letter-spacing: 0.14em;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;                                 /* [TAMANHO] Espaço entre os links do menu */
+      flex-wrap: wrap;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: var(--m3-texto);
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: color 0.25s ease;
+    }
+
+    .main-nav a:hover {
+      color: var(--m3-bronze);
+    }
+
+    .nav-cta {
+      background-color: var(--m3-grafite);       /* [COR] Botão Fale conosco no menu */
+      color: var(--m3-branco) !important;
+      padding: 9px 15px;
+      border-radius: 4px;
+    }
+
+    .nav-cta:hover {
+      background-color: var(--m3-bronze);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--m3-borda);
+      border-radius: 4px;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background-color: var(--m3-grafite);
+      margin: 4px 0;
+    }
+
+    /* -------------------------------------------------------------------
+       [FOTO] [COR] [TAMANHO] BANNER PRINCIPAL (.hero) E FOTO DO PROFISSIONAL
+       ------------------------------------------------------------------- */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1c2127 0%, #2b323b 65%, #3d2c22 100%); /* [COR] Fundo corporativo escuro */
+      color: var(--m3-branco);
+      padding: 72px 0 64px;                      /* [TAMANHO] Espaçamento vertical do Hero */
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;      /* [TAMANHO] Proporção texto e foto */
+      gap: 44px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--m3-bronze-claro);             /* [COR] Destaque acima do título */
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-family: var(--m3-fonte-titulo);       /* [FONTE] Título principal do Hero */
+      font-size: clamp(2.1rem, 4.2vw, 3.2rem);   /* [TAMANHO] Tamanho responsivo do H1 */
+      line-height: 1.14;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 em,
+    .section-heading h2 em,
+    .about-copy h2 em,
+    .contact-grid h2 em,
+    .faq-intro h2 em {
+      font-style: italic;
+      color: var(--m3-bronze-claro);             /* [COR] Destaque em bronze claro */
+    }
+
+    .hero-description {
+      font-size: 1.04rem;
+      color: rgba(255, 255, 255, 0.88);
+      margin-bottom: 26px;
+      max-width: 560px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 22px;                        /* [TAMANHO] Tamanho dos botões */
+      border-radius: 4px;                        /* [TAMANHO] Cantos retos/corporativos */
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.93rem;
+      transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);               /* [EFEITO] Elevação suave */
+    }
+
+    .button-primary {
+      background-color: var(--m3-bronze);        /* [COR] Botão principal em bronze */
+      color: var(--m3-branco);
+    }
+
+    .button-primary:hover {
+      background-color: #9c5325;
+    }
+
+    .button-outline {
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: var(--m3-branco);
+    }
+
+    .button-outline:hover {
+      border-color: var(--m3-bronze-claro);
+      color: var(--m3-bronze-claro);
+    }
+
+    .button-light {
+      background-color: var(--m3-branco);
+      color: var(--m3-grafite);
+    }
+
+    .button-wide {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .trust-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 4px;
+      background-color: rgba(181, 101, 50, 0.22);
+      color: var(--m3-bronze-claro);
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+    }
+
+    /* [FOTO] [TAMANHO] Moldura da foto do profissional */
+    .hero-visual {
+      position: relative;
+    }
+
+    .photo-frame {
+      position: relative;
+      border-radius: 6px;                        /* [TAMANHO] Cantos discretos da moldura */
+      overflow: hidden;
+      border: 2px solid rgba(230, 168, 124, 0.45); /* [COR] Moldura bronze */
+      background-color: #14181d;
+      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.35);
+    }
+
+    .professional-photo {
+      width: 100%;
+      height: 430px;                             /* [FOTO] [TAMANHO] Altura no celular/tablet */
+      object-fit: cover;                         /* [FOTO] Enquadramento sem distorcer */
+      object-position: top center;               /* [FOTO] Mantém cabeça/rosto no topo */
+      display: block;
+    }
+
+    /* [FOTO] [TAMANHO] Ajuste específico para versão PC (telas maiores que 900px)
+       evitando que a foto do profissional fique cortada no topo ou na base */
+    @media (min-width: 901px) {
+      .professional-photo {
+        height: 490px;                           /* [FOTO] [TAMANHO] Altura ideal da foto no PC */
+        object-position: center 14%;             /* [FOTO] Alinha o rosto/ombros no PC sem cortar */
+      }
+    }
+
+    .photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(20, 24, 29, 0.85) 100%);
+      pointer-events: none;
+    }
+
+    .photo-caption {
+      position: absolute;
+      left: 18px;
+      bottom: 16px;
+      right: 18px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .caption-line {
+      width: 28px;
+      height: 2px;
+      background-color: var(--m3-bronze-claro);
+    }
+
+    .photo-caption small {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--m3-bronze-claro);
+    }
+
+    .photo-caption strong {
+      font-family: var(--m3-fonte-titulo);
+      font-size: 1rem;
+      color: var(--m3-branco);
+    }
+
+    .floating-card {
+      position: absolute;
+      background-color: var(--m3-branco);
+      color: var(--m3-grafite);
+      padding: 10px 14px;
+      border-radius: 4px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      z-index: 3;
+    }
+
+    .floating-card-top {
+      top: 16px;
+      left: -14px;
+      border-left: 3px solid var(--m3-bronze);
+    }
+
+    .floating-card-bottom {
+      bottom: 64px;
+      right: -12px;
+      font-weight: 700;
+      color: var(--m3-bronze);
+    }
+
+    .visual-index {
+      margin-top: 10px;
+      text-align: right;
+      font-family: var(--m3-fonte-titulo);
+      font-size: 0.88rem;
+      color: var(--m3-bronze-claro);
+    }
+
+    /* -------------------------------------------------------------------
+       [COR] [TAMANHO] POSICIONAMENTO (.statement), SERVIÇOS (.services-grid) E SOBRE (.about-section)
+       ------------------------------------------------------------------- */
+    .statement {
+      background-color: var(--m3-branco);
+      border-bottom: 1px solid var(--m3-borda);
+      padding: 28px 0;
+    }
+
+    .statement-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .statement-label {
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: var(--m3-bronze);
+    }
+
+    .statement-inner p {
+      font-family: var(--m3-fonte-titulo);
+      font-size: 1.08rem;
+      color: var(--m3-grafite);
+    }
+
+    .statement-inner a {
+      color: var(--m3-bronze);
+      font-size: 1.1rem;
+    }
+
+    .section {
+      padding: 76px 0;                           /* [TAMANHO] Espaçamento vertical das seções */
+    }
+
+    .section-kicker {
+      display: block;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: var(--m3-bronze);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 28px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .section-heading h2 {
+      font-family: var(--m3-fonte-titulo);
+      font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+      color: var(--m3-grafite);
+      line-height: 1.18;
+    }
+
+    .section-heading > p {
+      max-width: 380px;
+      color: var(--m3-texto-muted);
+      font-size: 0.95rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);     /* [TAMANHO] 3 colunas de cartões no PC */
+      gap: 22px;                                 /* [TAMANHO] Espaço entre os cartões */
+    }
+
+    .service-card {
+      background-color: var(--m3-branco);        /* [COR] Fundo do cartão de serviço */
+      border: 1px solid var(--m3-borda);         /* [COR] Borda do cartão */
+      border-top: 3px solid var(--m3-bronze);    /* [COR] [TAMANHO] Linha bronze no topo */
+      border-radius: 4px;
+      padding: 24px 22px;                        /* [TAMANHO] Espaçamento interno do cartão */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 6px 18px rgba(28, 33, 39, 0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);               /* [EFEITO] Elevação no hover */
+      border-color: var(--m3-bronze);
+      box-shadow: 0 14px 28px rgba(28, 33, 39, 0.12);
+    }
+
+    .service-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .service-number {
+      font-family: var(--m3-fonte-titulo);
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--m3-bronze);
+    }
+
+    .service-icon {
+      color: var(--m3-grafite);
+      font-size: 1.1rem;
+    }
+
+    .service-card h3 {
+      font-family: var(--m3-fonte-titulo);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--m3-grafite);
+    }
+
+    .service-card p {
+      font-size: 0.93rem;
+      color: var(--m3-texto-muted);
+    }
+
+    .service-link {
+      color: var(--m3-bronze);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .service-card-featured {
+      background: linear-gradient(145deg, #1c2127 0%, #2b323b 100%); /* [COR] Cartão especial em destaque */
+      color: var(--m3-branco);
+      border-color: var(--m3-grafite);
+      border-top-color: var(--m3-bronze-claro);
+    }
+
+    .service-card-featured h3,
+    .service-card-featured p {
+      color: var(--m3-branco);
+    }
+
+    .featured-mark {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--m3-bronze-claro);
+    }
+
+    .about-section {
+      background-color: var(--m3-branco);
+      border-top: 1px solid var(--m3-borda);
+      border-bottom: 1px solid var(--m3-borda);
+      padding: 76px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .about-art {
+      position: relative;
+      background: linear-gradient(145deg, #1c2127 0%, #3a291f 100%); /* [COR] Bloco institucional do escritório */
+      color: var(--m3-branco);
+      border-radius: 6px;
+      padding: 36px 30px;
+      border: 1px solid rgba(230, 168, 124, 0.35);
+      box-shadow: 0 16px 36px rgba(28, 33, 39, 0.14);
+    }
+
+    .about-symbol {
+      font-size: 1.6rem;
+      color: var(--m3-bronze-claro);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .about-overline {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      color: var(--m3-bronze-claro);
+      margin-bottom: 10px;
+    }
+
+    .about-art-content p {
+      font-family: var(--m3-fonte-titulo);
+      font-size: 1.55rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 24px;
+    }
+
+    .about-art-content em {
+      color: var(--m3-bronze-claro);
+      font-style: italic;
+    }
+
+    .about-art-bottom {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 14px;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .about-copy h2 {
+      font-family: var(--m3-fonte-titulo);
+      font-size: clamp(1.75rem, 3vw, 2.3rem);
+      color: var(--m3-grafite);
+      margin-bottom: 14px;
+    }
+
+    .about-copy > p {
+      color: var(--m3-texto-muted);
+      margin-bottom: 14px;
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 22px 0;
+    }
+
+    .about-values > div {
+      background-color: var(--m3-fundo);
+      border: 1px solid var(--m3-borda);
+      border-radius: 4px;
+      padding: 14px;
+    }
+
+    .about-values strong {
+      display: block;
+      color: var(--m3-grafite);
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+    }
+
+    .about-values small {
+      color: var(--m3-texto-muted);
+      font-size: 0.8rem;
+    }
+
+    .text-link {
+      color: var(--m3-bronze);
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* -------------------------------------------------------------------
+       [COR] [TAMANHO] PROCESSO, CONTATO, FAQ, RODAPÉ E WHATSAPP FLUTUANTE
+       ------------------------------------------------------------------- */
+    .process-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .process-step {
+      background-color: var(--m3-branco);
+      border: 1px solid var(--m3-borda);
+      border-radius: 4px;
+      padding: 24px;
+    }
+
+    .process-count {
+      font-family: var(--m3-fonte-titulo);
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--m3-bronze);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .process-step h3 {
+      font-family: var(--m3-fonte-titulo);
+      font-size: 1.15rem;
+      color: var(--m3-grafite);
+      margin-bottom: 8px;
+    }
+
+    .process-step p {
+      font-size: 0.92rem;
+      color: var(--m3-texto-muted);
+    }
+
+    .contact-section {
+      background: linear-gradient(135deg, #1c2127 0%, #2b323b 100%); /* [COR] Fundo escuro do bloco de contato */
+      color: var(--m3-branco);
+      padding: 72px 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .section-kicker-light {
+      color: var(--m3-bronze-claro);
+    }
+
+    .contact-grid h2 {
+      font-family: var(--m3-fonte-titulo);
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      margin-bottom: 12px;
+    }
+
+    .contact-grid > div > p {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .contact-card {
+      background-color: var(--m3-branco);
+      color: var(--m3-grafite);
+      border-radius: 6px;
+      padding: 28px;
+      border-top: 4px solid var(--m3-bronze);
+    }
+
+    .contact-card-icon {
+      font-size: 1.8rem;
+      color: #25d366;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .contact-card h3 {
+      font-family: var(--m3-fonte-titulo);
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+
+    .contact-card p {
+      font-size: 0.92rem;
+      color: var(--m3-texto-muted);
+      margin-bottom: 18px;
+    }
+
+    .contact-card small {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: var(--m3-texto-muted);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .faq-intro h2 {
+      font-family: var(--m3-fonte-titulo);
+      font-size: clamp(1.75rem, 3vw, 2.3rem);
+      color: var(--m3-grafite);
+      margin-bottom: 12px;
+    }
+
+    .faq-intro p {
+      color: var(--m3-texto-muted);
+      margin-bottom: 16px;
+    }
+
+    .faq-list details {
+      background-color: var(--m3-branco);
+      border: 1px solid var(--m3-borda);
+      border-radius: 4px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+
+    .faq-list summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--m3-grafite);
+    }
+
+    .faq-list details p {
+      margin-top: 10px;
+      color: var(--m3-texto-muted);
+      font-size: 0.93rem;
+    }
+
+    .site-footer {
+      background-color: #14181d;                 /* [COR] Fundo do rodapé */
+      color: rgba(255, 255, 255, 0.82);
+      padding-top: 48px;
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 32px;
+      padding-bottom: 36px;
+    }
+
+    .footer-logo-img {
+      height: 36px;
+      width: auto;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .footer-links,
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-links strong,
+    .footer-contact strong {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--m3-bronze-claro);
+      margin-bottom: 4px;
+    }
+
+    .footer-links a,
+    .footer-contact a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover,
+    .footer-contact a:hover {
+      color: var(--m3-bronze-claro);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 16px 0;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .footer-bottom-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background-color: #25d366;
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+      z-index: 95;
+    }
+
+    /* -------------------------------------------------------------------
+       [TAMANHO] RESPONSIVO (TABLET E CELULAR)
+       ------------------------------------------------------------------- */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .faq-grid,
+      .footer-main {
+        grid-template-columns: 1fr;              /* [TAMANHO] Coluna única no tablet/celular */
+      }
+
+      .services-grid,
+      .process-list,
+      .about-values {
+        grid-template-columns: 1fr 1fr;          /* [TAMANHO] 2 colunas no tablet */
+      }
+
+      .floating-card-top,
+      .floating-card-bottom {
+        position: static;
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .main-nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .services-grid,
+      .process-list,
+      .about-values {
+        grid-template-columns: 1fr;              /* [TAMANHO] 1 coluna no celular */
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- [LINK] [TEXTO] Link de acessibilidade para pular direto ao conteúdo -->
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- Barra superior de demonstração -->
+  <!-- =====================================================================
+       [LINK] [TEXTO] [COR] BARRA SUPERIOR DE DEMONSTRAÇÃO E BOTÃO DE VOLTAR
+       ===================================================================== -->
   <div class="demo-bar">
     <div class="container demo-bar-inner">
+      <!-- [TEXTO] Identificação do modelo -->
       <span><i class="fa-solid fa-scale-balanced"></i> MODELO 03 · DIREITO EMPRESARIAL</span>
+      <!-- [LINK] [TEXTO] Botão de voltar para a página principal da AdvPage -->
       <a href="../../index.html"><i class="fa-solid fa-arrow-left"></i> Voltar para a AdvPage</a>
     </div>
   </div>
 
-  <!-- Cabeçalho -->
+  <!-- =====================================================================
+       [LINK] [FOTO] [TEXTO] CABEÇALHO PRINCIPAL DO MODELO 03
+       ===================================================================== -->
   <header class="site-header" id="topo">
     <div class="container nav-wrap">
 
+      <!-- [LINK] [FOTO] [TEXTO] Logo do escritório -->
       <a class="brand" href="#topo" aria-label="Página inicial">
-        <!-- TROQUE O LOGO: substitua img/logo.webp pelo nome do arquivo desejado -->
+        <!-- [FOTO] Troque img/logo.webp pelo arquivo do logo do escritório -->
         <img class="brand-logo" src="img/logo.webp" alt="Logo do escritório"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <span class="brand-fallback">JURÍDICO<span>EMPRESARIAL</span></span>
       </a>
 
+      <!-- [EFEITO] Botão mobile -->
       <button class="menu-toggle" type="button" aria-label="Abrir menu"
               aria-expanded="false" aria-controls="menu-principal">
         <span></span><span></span><span></span>
       </button>
 
+      <!-- [LINK] [TEXTO] Links de navegação -->
       <nav class="main-nav" id="menu-principal" aria-label="Navegação principal">
         <a href="#atuacao">Áreas de atuação</a>
         <a href="#sobre">O escritório</a>
@@ -69,23 +1036,30 @@
   </header>
 
   <main id="conteudo">
-    <!-- Banner principal -->
+    <!-- ===================================================================
+         [FOTO] [TEXTO] [LINK] BANNER PRINCIPAL (HERO) E FOTO DO PROFISSIONAL
+         =================================================================== -->
     <section class="hero">
       <div class="hero-glow hero-glow-one"></div>
       <div class="hero-glow hero-glow-two"></div>
 
       <div class="container hero-grid">
         <div class="hero-copy">
+          <!-- [TEXTO] Categoria principal -->
           <div class="eyebrow"><span></span> DIREITO EMPRESARIAL E ESTRATÉGIA</div>
 
+          <!-- [TEXTO] Título principal -->
           <h1>Segurança jurídica para <em>decisões que movem</em> sua empresa.</h1>
 
+          <!-- [TEXTO] Descrição do Hero -->
           <p class="hero-description">
             Orientação jurídica próxima e estratégica para empresas que buscam
             tomar decisões com mais clareza, prevenir riscos e estruturar seus negócios.
           </p>
 
+          <!-- [LINK] [TEXTO] Botões de ação -->
           <div class="hero-actions">
+            <!-- [LINK] Altere 5551994525272 pelo número de WhatsApp -->
             <a class="button button-primary"
                href="https://web.whatsapp.com/send?phone=5551994525272"
                target="_blank" rel="noopener noreferrer">
@@ -96,6 +1070,7 @@
             </a>
           </div>
 
+          <!-- [TEXTO] Selo de confiança -->
           <div class="hero-trust">
             <div class="trust-icon"><i class="fa-solid fa-shield-halved"></i></div>
             <p><strong>Estratégia, prevenção e orientação.</strong><br>Atendimento voltado às necessidades de cada negócio.</p>
@@ -105,10 +1080,9 @@
         <div class="hero-visual">
           <div class="photo-frame">
             <!--
-              FOTO DO PROFISSIONAL:
-              Arquivo atual: img/advogado-modelo-03.jpg
-              Para trocar, coloque a nova imagem na pasta img deste modelo
-              e atualize o caminho abaixo.
+              [FOTO] FOTO DO PROFISSIONAL:
+              Arquivo atual: img/foto1.jpg (ou img/advogado-modelo-03.jpg).
+              Ajuste de enquadramento no PC fica em @media (min-width: 901px) .professional-photo.
             -->
             <img class="professional-photo"
                  src="img/foto1.jpg"
@@ -125,6 +1099,7 @@
             </div>
           </div>
 
+          <!-- [TEXTO] Cartões flutuantes sobre/ao lado da foto -->
           <div class="floating-card floating-card-top">
             <span class="floating-icon"><i class="fa-solid fa-briefcase"></i></span>
             <div><strong>Visão estratégica</strong><small>Orientação para negócios</small></div>
@@ -142,7 +1117,9 @@
       <div class="hero-bottom-line"></div>
     </section>
 
-    <!-- Faixa de posicionamento -->
+    <!-- ===================================================================
+         [TEXTO] [LINK] FAIXA DE POSICIONAMENTO
+         =================================================================== -->
     <section class="statement">
       <div class="container statement-inner">
         <span class="statement-label">NOSSO PROPÓSITO</span>
@@ -151,7 +1128,9 @@
       </div>
     </section>
 
-    <!-- Áreas de atuação -->
+    <!-- ===================================================================
+         [TEXTO] [LINK] ÁREAS DE ATUAÇÃO (CARDS DE SERVIÇOS)
+         =================================================================== -->
     <section class="section services-section" id="atuacao">
       <div class="container">
         <div class="section-heading">
@@ -166,6 +1145,7 @@
         </div>
 
         <div class="services-grid">
+          <!-- [TEXTO] [LINK] Card 01 -->
           <article class="service-card">
             <div class="service-top">
               <span class="service-number">01</span>
@@ -176,6 +1156,7 @@
             <a href="#contato" class="service-link">Saiba mais <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
           </article>
 
+          <!-- [TEXTO] [LINK] Card 02 -->
           <article class="service-card">
             <div class="service-top">
               <span class="service-number">02</span>
@@ -186,6 +1167,7 @@
             <a href="#contato" class="service-link">Saiba mais <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
           </article>
 
+          <!-- [TEXTO] [LINK] Card 03 -->
           <article class="service-card">
             <div class="service-top">
               <span class="service-number">03</span>
@@ -196,6 +1178,7 @@
             <a href="#contato" class="service-link">Saiba mais <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
           </article>
 
+          <!-- [TEXTO] [LINK] Card 04 -->
           <article class="service-card">
             <div class="service-top">
               <span class="service-number">04</span>
@@ -206,6 +1189,7 @@
             <a href="#contato" class="service-link">Saiba mais <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
           </article>
 
+          <!-- [TEXTO] [LINK] Card 05 -->
           <article class="service-card">
             <div class="service-top">
               <span class="service-number">05</span>
@@ -216,6 +1200,7 @@
             <a href="#contato" class="service-link">Saiba mais <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
           </article>
 
+          <!-- [TEXTO] [LINK] Card 06 (destaque) -->
           <article class="service-card service-card-featured">
             <div class="featured-mark"><i class="fa-solid fa-sparkles"></i> ATENDIMENTO PERSONALIZADO</div>
             <h3>Uma necessidade específica?</h3>
@@ -230,7 +1215,9 @@
       </div>
     </section>
 
-    <!-- Sobre o escritório -->
+    <!-- ===================================================================
+         [TEXTO] [LINK] SOBRE O ESCRITÓRIO
+         =================================================================== -->
     <section class="about-section" id="sobre">
       <div class="container about-grid">
         <div class="about-art">
@@ -272,7 +1259,9 @@
       </div>
     </section>
 
-    <!-- Processo de atendimento -->
+    <!-- ===================================================================
+         [TEXTO] PROCESSO DE ATENDIMENTO
+         =================================================================== -->
     <section class="section process-section" id="processo">
       <div class="container">
         <div class="section-heading process-heading">
@@ -303,7 +1292,9 @@
       </div>
     </section>
 
-    <!-- Bloco de contato -->
+    <!-- ===================================================================
+         [TEXTO] [LINK] BLOCO DE CONTATO
+         =================================================================== -->
     <section class="contact-section" id="contato">
       <div class="contact-decoration"></div>
       <div class="container contact-grid">
@@ -326,7 +1317,9 @@
       </div>
     </section>
 
-    <!-- Perguntas frequentes -->
+    <!-- ===================================================================
+         [TEXTO] [LINK] PERGUNTAS FREQUENTES (FAQ)
+         =================================================================== -->
     <section class="section faq-section" id="duvidas">
       <div class="container faq-grid">
         <div class="faq-intro">
@@ -358,11 +1351,13 @@
     </section>
   </main>
 
-  <!-- Rodapé -->
+  <!-- =====================================================================
+       [LINK] [FOTO] [TEXTO] RODAPÉ E BOTÃO FLUTUANTE DO WHATSAPP
+       ===================================================================== -->
   <footer class="site-footer">
     <div class="container footer-main">
       <div class="footer-brand">
-        <!-- LOGO DO RODAPÉ: pode usar o logo da AdvPage ou o do escritório -->
+        <!-- [FOTO] Logo do rodapé -->
         <img src="img/logo.webp" alt="Logo do escritório" class="footer-logo-img"
              onerror="this.style.display='none'">
         <p>Assessoria jurídica empresarial com foco em clareza, prevenção e orientação responsável.</p>
@@ -389,13 +1384,13 @@
 
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
-        <span>© <span id="ano-atual"></span> · Conteúdo demonstrativo para modelo de site jurídico.</span>
+        <span>© <span id="ano-atual">2026</span> · Conteúdo demonstrativo para modelo de site jurídico.</span>
         <span>Material ilustrativo. A atuação e as informações devem ser personalizadas pelo profissional responsável.</span>
       </div>
     </div>
   </footer>
 
-  <!-- WhatsApp flutuante -->
+  <!-- [LINK] [EFEITO] Botão flutuante do WhatsApp -->
   <a class="whatsapp-float"
      href="https://web.whatsapp.com/send?phone=5551994525272"
      target="_blank" rel="noopener noreferrer"
@@ -403,6 +1398,7 @@
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
+  <!-- [ARQUIVO] Script externo do Modelo 03 -->
   <script src="script.js"></script>
 </body>
 </html>
