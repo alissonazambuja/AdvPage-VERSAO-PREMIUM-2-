@@ -633,3 +633,21 @@ footer p {
     font-size: 30px;
   }
 }
+
+.model-logo {
+  transition: transform 0.25s ease;
+}
+
+.site-brand:hover .model-logo,
+.model-logo:hover {
+  transform: scale(1.15);
+}
+
+.model-logo {
+  transition: transform 0.25s ease;
+}
+
+.site-brand:hover .model-logo,
+.model-logo:hover {
+  transform: scale(5.0);
+}

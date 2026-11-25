@@ -652,3 +652,12 @@ margin-left:0
 }
 
 }
+
+.model-logo{
+transition:transform .25s ease
+}
+
+.site-brand:hover .model-logo,
+.model-logo:hover{
+transform:scale(5.0)
+}

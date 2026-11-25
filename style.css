@@ -1527,3 +1527,12 @@ footer {
   height: 34px;
   display: block;
 }
+
+.site-logo {
+  transition: transform 0.25s ease;
+}
+
+.logo:hover .site-logo,
+.site-logo:hover {
+  transform: scale(6.0);
+}
