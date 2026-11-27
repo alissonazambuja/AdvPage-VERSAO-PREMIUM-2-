@@ -1,23 +1,41 @@
 (function(){
   'use strict';
 
-  const menu = document.querySelector('.menu');
-  const nav = document.querySelector('#menu-principal');
-  const header = document.querySelector('.header');
+  // Menu mobile universal (funciona com .menu ou .menu-toggle e com open, is-open ou active)
+  const toggles = document.querySelectorAll('.menu, .menu-toggle');
+  toggles.forEach((toggle) => {
+    const header = toggle.closest('header') || document;
+    const controlsId = toggle.getAttribute('aria-controls');
+    const nav =
+      (controlsId && document.getElementById(controlsId)) ||
+      document.querySelector('#menu-principal') ||
+      header.querySelector('nav, .main-nav, .nav-links');
 
-  // Menu mobile
-  if (menu && nav) {
-    menu.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      menu.setAttribute('aria-expanded', String(open));
+    if (!nav) return;
+
+    toggle.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const willOpen = !(
+        nav.classList.contains('open') ||
+        nav.classList.contains('is-open') ||
+        nav.classList.contains('active')
+      );
+
+      nav.classList.toggle('open', willOpen);
+      nav.classList.toggle('is-open', willOpen);
+      nav.classList.toggle('active', willOpen);
+      toggle.setAttribute('aria-expanded', String(willOpen));
     });
-    nav.querySelectorAll('a').forEach(link => {
+
+    nav.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
-        nav.classList.remove('open');
-        menu.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('open', 'is-open', 'active');
+        toggle.setAttribute('aria-expanded', 'false');
       });
     });
-  }
+  });
 
   // Barra de progresso da leitura
   const progress = document.createElement('div');
@@ -69,6 +87,7 @@
   revealTargets.forEach(el => observer.observe(el));
 
   // Header, progresso e botão voltar ao topo
+  const header = document.querySelector('.header');
   const updateScrollUI = () => {
     const max = document.documentElement.scrollHeight - window.innerHeight;
     const percent = max > 0 ? (window.scrollY / max) * 100 : 0;
@@ -132,9 +151,28 @@
 
 
 /* =========================================
+   ADVPAGE — REALCE DOS BLOCOS AO ROLAR
+   ========================================= */
+(() => {
+  const blocos = document.querySelectorAll('main section[id], .features');
+  if (!blocos.length || !('IntersectionObserver' in window)) return;
+
+  const obs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.setAttribute('data-in-view', String(entry.isIntersecting));
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  blocos.forEach((bloco) => obs.observe(bloco));
+})();
+
+
+/* =========================================
    ADVPAGE — AMPLIAR LOGO AO CLICAR
    ========================================= */
-
 (() => {
     const logo = document.querySelector('.header .logo');
     const logoImage = logo?.querySelector('.site-logo');
@@ -167,7 +205,6 @@
     let previousFocus = null;
 
     function openLogo(event) {
-        // Não interfere com Ctrl+clique ou botão do meio.
         if (event && (event.ctrlKey || event.metaKey || event.shiftKey ||
                       event.altKey || event.button !== 0)) {
             return;
@@ -214,4 +251,3 @@
         }
     });
 })();
-
