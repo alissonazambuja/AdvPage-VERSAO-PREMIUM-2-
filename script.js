@@ -311,5 +311,45 @@
     if (event.key === 'Escape') {
       closeLogo();
     }
+
+    /* =====================================================================
+   GARANTIA FINAL DO MENU MOBILE (#menu-principal / .menu)
+   ===================================================================== */
+(() => {
+  const btnMenu = document.querySelector('.header .menu');
+  const menuNav = document.querySelector('#menu-principal') || document.querySelector('.header .nav-links');
+
+  if (!btnMenu || !menuNav) return;
+
+  btnMenu.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const vaiAbrir = !menuNav.classList.contains('open');
+    menuNav.classList.toggle('open', vaiAbrir);
+    menuNav.classList.toggle('is-open', vaiAbrir);
+    menuNav.classList.toggle('active', vaiAbrir);
+    btnMenu.classList.toggle('open', vaiAbrir);
+    btnMenu.setAttribute('aria-expanded', String(vaiAbrir));
+  });
+
+  menuNav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menuNav.classList.remove('open', 'is-open', 'active');
+      btnMenu.classList.remove('open');
+      btnMenu.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!menuNav.classList.contains('open')) return;
+    if (!menuNav.contains(event.target) && !btnMenu.contains(event.target)) {
+      menuNav.classList.remove('open', 'is-open', 'active');
+      btnMenu.classList.remove('open');
+      btnMenu.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+
   });
 })();
