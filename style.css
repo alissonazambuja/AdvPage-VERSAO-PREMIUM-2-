@@ -2,11 +2,11 @@
    [ARQUIVO]: style.css PRINCIPAL (raiz do projeto)
    [FINALIDADE]: Estilo completo do site principal e dos cartões de modelos.
    [ATALHOS DE BUSCA - CTRL + F]:
-     - [COR]     -> cores, fundos e gradientes
-     - [TAMANHO] -> tamanhos, bordas, margens e espaçamentos
-     - [EFEITO]  -> animações, sombras e hover
-     - [FOTO]    -> imagens dentro dos cartões
-     - [FONTE]   -> tipos de letra
+- [COR]     -> cores, fundos e gradientes
+- [TAMANHO] -> tamanhos, bordas, margens e espaçamentos
+- [EFEITO]  -> animações, sombras e hover
+- [FOTO]    -> imagens dentro dos cartões
+- [FONTE]   -> tipos de letra
    ========================================================================= */
 
 /* -----------------------------------------------------------------------
@@ -1324,6 +1324,29 @@ footer {
 @media (max-width: 900px) {
   .nav-links {
     display: none;
+  }
+
+  nav.open,
+  nav.is-open,
+  nav.active,
+  .nav-links.open,
+  .nav-links.is-open,
+  .nav-links.active,
+  .main-nav.open,
+  .main-nav.is-open,
+  .main-nav.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    padding: 20px 24px;
+    gap: 16px;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 14px 30px rgba(23, 34, 43, 0.12);
+    z-index: 99;
   }
 
   .menu {
