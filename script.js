@@ -2,101 +2,44 @@
   'use strict';
 
   /* =====================================================================
-     MENU MOBILE UNIVERSAL (REVISADO E BLINDADO)
+     MENU MOBILE UNIVERSAL (REVISADO E DIRETO)
      ===================================================================== */
   function initMobileMenu() {
-    const toggles = document.querySelectorAll(
-      '.menu, .menu-toggle, .hamburger, [data-menu-toggle]'
-    );
+    const toggle = document.querySelector('.header .menu, .menu, .menu-toggle');
+    const nav =
+      document.querySelector('#menu-principal') ||
+      document.querySelector('.header .nav-links, .header nav');
 
-    toggles.forEach((toggle) => {
-      if (toggle.dataset.menuBound === 'true') return;
-      toggle.dataset.menuBound = 'true';
+    if (!toggle || !nav || toggle.dataset.menuBound === 'true') return;
+    toggle.dataset.menuBound = 'true';
 
-      const headerEl = toggle.closest('header') || document;
-      const controlsId = toggle.getAttribute('aria-controls');
+    function setOpen(isOpen) {
+      nav.classList.toggle('open', isOpen);
+      nav.classList.toggle('is-open', isOpen);
+      nav.classList.toggle('active', isOpen);
+      toggle.classList.toggle('open', isOpen);
+      toggle.classList.toggle('active', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    }
 
-      const nav =
-        (controlsId && document.getElementById(controlsId)) ||
-        document.querySelector('#menu-principal') ||
-        headerEl.querySelector('.nav-links, .main-nav, nav');
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const currentlyOpen =
+        nav.classList.contains('open') ||
+        nav.classList.contains('is-open') ||
+        nav.classList.contains('active');
+      setOpen(!currentlyOpen);
+    });
 
-      if (!nav) return;
+    nav.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
 
-      function setMenuState(shouldOpen) {
-        nav.classList.toggle('open', shouldOpen);
-        nav.classList.toggle('is-open', shouldOpen);
-        nav.classList.toggle('active', shouldOpen);
-        toggle.classList.toggle('open', shouldOpen);
-        toggle.classList.toggle('is-open', shouldOpen);
-        toggle.classList.toggle('active', shouldOpen);
-        toggle.setAttribute('aria-expanded', String(shouldOpen));
-
-        if (window.innerWidth <= 900) {
-          if (shouldOpen) {
-            nav.style.display = 'flex';
-            nav.style.flexDirection = 'column';
-          } else {
-            nav.style.display = 'none';
-          }
-        } else {
-          nav.style.removeProperty('display');
-          nav.style.removeProperty('flex-direction');
-        }
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+        setOpen(false);
       }
-
-      // Garante estado inicial fechado no mobile
-      if (window.innerWidth <= 900) {
-        const initiallyOpen =
-          nav.classList.contains('open') ||
-          nav.classList.contains('is-open') ||
-          nav.classList.contains('active');
-        setMenuState(initiallyOpen);
-      }
-
-      toggle.addEventListener('click', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-
-        const isCurrentlyOpen =
-          nav.classList.contains('open') ||
-          nav.classList.contains('is-open') ||
-          nav.classList.contains('active') ||
-          toggle.getAttribute('aria-expanded') === 'true';
-
-        setMenuState(!isCurrentlyOpen);
-      });
-
-      nav.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-          setMenuState(false);
-        });
-      });
-
-      document.addEventListener('click', (event) => {
-        const isOpen =
-          nav.classList.contains('open') ||
-          nav.classList.contains('is-open') ||
-          nav.classList.contains('active');
-        if (!isOpen) return;
-
-        if (!nav.contains(event.target) && !toggle.contains(event.target)) {
-          setMenuState(false);
-        }
-      });
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 900) {
-          nav.style.removeProperty('display');
-          nav.style.removeProperty('flex-direction');
-        } else {
-          const isOpen =
-            nav.classList.contains('open') ||
-            nav.classList.contains('is-open') ||
-            nav.classList.contains('active');
-          setMenuState(isOpen);
-        }
-      });
     });
   }
 
